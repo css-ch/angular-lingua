@@ -42,18 +42,19 @@ export class TranslationsEditorComponent implements OnInit, OnDestroy {
           return translations;
         }
 
-        const options = {
+        const options: Fuse.FuseOptions<Translation> = {
           shouldSort: true,
-          threshold: 0.5,
+          threshold: 0.6,
           location: 0,
           distance: 100,
           maxPatternLength: 64,
           minMatchCharLength: 1,
           keys: [
-            'key',
-            ...languages.map(lang => `value.${lang}`)
+            "key",
+            ...languages.map(lang => `value.${lang}`) as any
           ]
         };
+
         const fuse = new Fuse(translations, options);
 
         return fuse.search(filter);

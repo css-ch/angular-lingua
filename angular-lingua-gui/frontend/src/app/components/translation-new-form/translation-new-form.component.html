@@ -2,6 +2,10 @@
   <div class="key-container">
     <mat-form-field class="fullwidth">
       <input matInput placeholder="Key" [(ngModel)]="translation.key">
+
+      <mat-error >
+        Please enter a valid email address
+      </mat-error>
     </mat-form-field>
 
     <button mat-raised-button color="primary" (click)="onSave()">save</button>
