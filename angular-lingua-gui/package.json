@@ -1,7 +1,7 @@
 {
-  "name": "angular-lingua",
+  "name": "angular-lingua-gui",
   "version": "1.0.0",
-  "description": "angular-lingua",
+  "description": "angular-lingua-gui",
   "main": "./backend/dist/index.js",
   "scripts": {
     "build": "npm run frontend-build && npm run backend-build",
@@ -15,7 +15,7 @@
     "preinstall": "npm run backend-install && npm run frontend-install && npm run build"
   },
   "bin": {
-    "translation-gui": "./backend/dist/index.js"
+    "angular-lingua-gui": "./backend/dist/index.js"
   },
   "dependencies": {},
   "repository": {

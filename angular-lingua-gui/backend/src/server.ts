@@ -20,7 +20,7 @@ export default async (
 	{TRANSLATION_FILE_NAME, LANGUAGES_FILE_NAME, USE_DOUBLE_QUOTES, IS_PRODUCTION, LOCALES_DIR}: ApplicationOption,
 	onServerStarted: (url: string) => void,
 ): Promise<void> => {
-	const PUBLIC_PATH = path.join(__dirname, '../../public');
+	const PUBLIC_PATH = path.join(__dirname, './public');
 	const PORT = process.env.PORT || await getPort({port: 8080});
 
 	const TRANSLATIONS_FILE_PATH = path.join(LOCALES_DIR, TRANSLATION_FILE_NAME);

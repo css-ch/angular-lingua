@@ -1,5 +1,5 @@
 {
-  "name": "angular-lingua-frontend",
+  "name": "angular-lingua-gui-frontend",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
