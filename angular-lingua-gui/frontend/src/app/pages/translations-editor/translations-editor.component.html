@@ -21,7 +21,8 @@
   <app-translation-edit-form
     *ngFor="let translation of filteredTranslations$ | async"
     [translation]="translation"
-    [languages]="languages$ | async"
+    [translations$]="translations$"
+    [languages$]="languages$"
     (translationChange)="onTranslationChange($event)"
     (translationKeyChange)="onTranslationKeyChange($event.oldKey, $event.newKey)"
     (translationDelete)="onTranslationDelete($event)"

@@ -1,5 +1,7 @@
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
-import {Subject} from 'rxjs';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
+import {NgForm} from '@angular/forms';
+import {ShowOnDirtyErrorStateMatcher} from '@angular/material';
+import {BehaviorSubject, Subject} from 'rxjs';
 import {debounceTime} from 'rxjs/operators';
 import {Translation} from '../../types/translation.type';
 
@@ -10,8 +12,11 @@ import {Translation} from '../../types/translation.type';
 })
 export class TranslationEditFormComponent implements OnInit, OnDestroy {
 
+  @ViewChild('form') public form: NgForm;
+
+  @Input() languages$: BehaviorSubject<string[]>;
+  @Input() translations$: BehaviorSubject<Translation[]>;
   @Input() translation: Translation;
-  @Input() languages: string[];
 
   @Output() translationKeyChange = new EventEmitter<{ oldKey: string, newKey: string }>();
   @Output() translationChange = new EventEmitter<Translation>();
@@ -19,6 +24,8 @@ export class TranslationEditFormComponent implements OnInit, OnDestroy {
 
   translationKeyChangeDebounce$ = new Subject<{ oldKey: string, newKey: string }>();
   translationChangeDebounce$ = new Subject<Translation>();
+
+  matcher = new ShowOnDirtyErrorStateMatcher();
 
   constructor() {
     this.translationKeyChangeDebounce$.pipe(
@@ -39,17 +46,27 @@ export class TranslationEditFormComponent implements OnInit, OnDestroy {
   }
 
   onTranslationKeyChange(oldKey: string, newKey: string) {
+    if (!this.form.valid) {
+      return;
+    }
     this.translationKeyChangeDebounce$.next({
       oldKey,
       newKey
     });
+    this.translation.key = newKey;
   }
 
   onTranslationChange() {
+    if (!this.form.valid) {
+      return;
+    }
     this.translationChangeDebounce$.next(this.translation);
   }
 
   onTranslationDelete() {
+    if (!this.form.valid) {
+      return;
+    }
     this.translationDelete.emit(this.translation);
   }
 }
