@@ -1,14 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormControl, FormGroupDirective, NgForm} from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material';
+import {AbstractControl, FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import {ErrorStateMatcher, ShowOnDirtyErrorStateMatcher} from '@angular/material';
 import {Translation} from '../../types/translation.type';
 
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
-}
 
 @Component({
   selector: 'app-translation-new-form',
@@ -18,14 +12,25 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class TranslationNewFormComponent implements OnInit {
 
   @Input() languages: string[];
-  @Input() translations: Translation[];
+  @Input() translations: Translation[] = [];
 
   @Output() create = new EventEmitter<Translation>();
   @Output() cancel = new EventEmitter<void>();
 
   translation: Translation = TranslationNewFormComponent.getEmptyTranslation();
 
-  formErrors: Translation = TranslationNewFormComponent.getEmptyTranslation();
+  keyFormControl = new FormControl('', [
+    Validators.required,
+    (control: AbstractControl) => {
+      if (this.translations.find((value => value.key === control.value)) === undefined) {
+        return null;
+      } else {
+        return {'keyIsTaken': {value: control.value}};
+      }
+    }
+  ]);
+
+  matcher = new ShowOnDirtyErrorStateMatcher();
 
   constructor() {
   }
@@ -41,25 +46,18 @@ export class TranslationNewFormComponent implements OnInit {
   }
 
   onSave() {
-    if (this.translation.key === '') {
-      this.formErrors.key = 'key can not be empty';
-      return;
-    }
-
-    if (this.translations.find((value => this.translation.key === value.key)) !== undefined) {
-      this.formErrors.key = 'This Key already exists';
+    if (!this.keyFormControl.valid) {
+      this.keyFormControl.markAsDirty();
       return;
     }
 
     this.create.emit(this.translation);
 
     this.translation = TranslationNewFormComponent.getEmptyTranslation();
-    this.formErrors = TranslationNewFormComponent.getEmptyTranslation();
   }
 
   onCancel() {
     this.translation = TranslationNewFormComponent.getEmptyTranslation();
-    this.formErrors = TranslationNewFormComponent.getEmptyTranslation();
 
     this.cancel.emit();
   }
