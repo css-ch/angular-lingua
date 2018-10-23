@@ -1,0 +1,27 @@
+{
+  "name": "angular-lingua",
+  "version": "1.0.0",
+  "description": "angular-lingua",
+  "main": "./backend/dist/index.js",
+  "scripts": {
+    "build": "npm run frontend-build && npm run backend-build",
+    "start": "npm run backend-start && npm run frontend-start",
+    "backend-install": "cd ./backend && npm install && cd .. ",
+    "backend-start": "cd ./backend && npm run start && cd ..",
+    "backend-build": "cd ./backend && npm run build && cd ..",
+    "frontend-install": "cd ./frontend && npm i && cd .. ",
+    "frontend-start": "cd ./frontend && npm run start && cd ..",
+    "frontend-build": "cd ./frontend && npm run build && cd ..",
+    "preinstall": "npm run backend-install && npm run frontend-install && npm run build"
+  },
+  "bin": {
+    "translation-gui": "./backend/dist/index.js"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/css-ch/angular-lingua.git"
+  },
+  "author": "",
+  "license": "ISC"
+}

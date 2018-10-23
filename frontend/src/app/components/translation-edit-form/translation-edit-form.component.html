@@ -1,0 +1,18 @@
+<mat-card class="container">
+  <div class="key-container">
+    <mat-form-field class="fullwidth">
+      <input matInput placeholder="Key" [ngModel]="translation.key"
+             (ngModelChange)="onTranslationKeyChange(translation.key, $event); translation.key = $event">
+    </mat-form-field>
+    <button mat-raised-button color="warn" (click)="onTranslationDelete()">delete</button>
+
+  </div>
+  <div class="translation-container">
+    <label *ngFor="let language of languages">
+      <mat-form-field class="fullwidth">
+        <textarea matInput [placeholder]="language" [ngModel]="translation.value[language]"
+                  (ngModelChange)="translation.value[language] = $event; onTranslationChange()"></textarea>
+      </mat-form-field>
+    </label>
+  </div>
+</mat-card>

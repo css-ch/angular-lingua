@@ -1,0 +1,30 @@
+<div class="container">
+
+  <div class="search-bar">
+    <mat-form-field>
+      <input matInput (keyup)="filter$.next($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="createNewMode = true" [disabled]="createNewMode">
+      Add new
+    </button>
+  </div>
+
+  <app-translation-new-form
+    [hidden]="!createNewMode"
+    [languages]="languages$ | async"
+    [translations]="translations$ | async"
+    (create)="onCreate($event)"
+    (cancel)="createNewMode = false"
+  ></app-translation-new-form>
+
+  <app-translation-edit-form
+    *ngFor="let translation of filteredTranslations$ | async"
+    [translation]="translation"
+    [languages]="languages$ | async"
+    (translationChange)="onTranslationChange($event)"
+    (translationKeyChange)="onTranslationKeyChange($event.oldKey, $event.newKey)"
+    (translationDelete)="onTranslationDelete($event)"
+  >
+  </app-translation-edit-form>
+</div>
