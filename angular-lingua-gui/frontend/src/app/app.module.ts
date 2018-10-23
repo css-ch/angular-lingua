@@ -15,8 +15,9 @@ import {
 } from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { TranslationEditFormComponent } from './components/translation-edit-form/translation-edit-form.component';
-import { TranslationNewFormComponent } from './components/translation-new-form/translation-new-form.component';
+import {TranslationEditFormComponent} from './components/translation-edit-form/translation-edit-form.component';
+import {TranslationNewFormComponent} from './components/translation-new-form/translation-new-form.component';
+import {KeyTakenValidatorDirective} from './validators/key-taken-validator.directive';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { TranslationNewFormComponent } from './components/translation-new-form/t
     TranslationsEditorComponent,
     TranslationEditFormComponent,
     TranslationNewFormComponent,
+    KeyTakenValidatorDirective,
   ],
   imports: [
     BrowserModule,

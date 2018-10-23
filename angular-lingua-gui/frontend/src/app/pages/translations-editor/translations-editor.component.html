@@ -12,8 +12,8 @@
 
   <app-translation-new-form
     [hidden]="!createNewMode"
-    [languages]="languages$ | async"
-    [translations]="translations$ | async"
+    [languages$]="languages$"
+    [translations$]="translations$"
     (create)="onCreate($event)"
     (cancel)="createNewMode = false"
   ></app-translation-new-form>

@@ -1,31 +1,41 @@
 <mat-card class="container">
-  <div class="key-container">
-    <mat-form-field class="fullwidth">
-      <input
-        matInput
-        placeholder="Key"
-        [(ngModel)]="translation.key"
-        [formControl]="keyFormControl"
-        [errorStateMatcher]="matcher"
-      >
-
-      <mat-error *ngIf="keyFormControl.hasError('required')">
-        You need to have a key
-      </mat-error>
-      <mat-error *ngIf="keyFormControl.hasError('keyIsTaken')">
-        This key is already taken
-      </mat-error>
-    </mat-form-field>
-
-    <button mat-raised-button color="primary" (click)="onSave()">save</button>
-    <button mat-raised-button color="warn" (click)="onCancel()">cancel</button>
-  </div>
-  <div class="translation-container">
-    <label *ngFor="let language of languages">
+  <form  #form="ngForm" (submit)="onSave()">
+    <div class="key-container">
       <mat-form-field class="fullwidth">
-        <textarea matInput [placeholder]="language" [(ngModel)]="translation.value[language]"></textarea>
+        <input
+          matInput
+          placeholder="Key"
+          name="key"
+          required
+          [keyTaken]="translations$"
+          [(ngModel)]="translation.key"
+          [errorStateMatcher]="matcher"
+          #keyInput="ngModel"
+        >
+
+        <mat-error *ngIf="keyInput.hasError('required')">
+          You need to have a key
+        </mat-error>
+        <mat-error *ngIf="keyInput.hasError('keyIsTaken')">
+          This key is already taken
+        </mat-error>
       </mat-form-field>
-    </label>
-  </div>
+
+      <button mat-raised-button color="primary" type="submit">save</button>
+      <button mat-raised-button color="warn" type="reset" (click)="onCancel()">cancel</button>
+    </div>
+    <div class="translation-container" >
+      <label *ngFor="let language of languages$ | async">
+        <mat-form-field class="fullwidth">
+          <textarea
+            matInput
+            [placeholder]="language"
+            [name]="language"
+            [(ngModel)]="translation.value[language]"
+          ></textarea>
+        </mat-form-field>
+      </label>
+    </div>
+  </form>
 </mat-card>
 <hr>

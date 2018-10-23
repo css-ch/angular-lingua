@@ -1,6 +1,7 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {AbstractControl, FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-import {ErrorStateMatcher, ShowOnDirtyErrorStateMatcher} from '@angular/material';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {NgForm} from '@angular/forms';
+import {ShowOnDirtyErrorStateMatcher} from '@angular/material';
+import {BehaviorSubject} from 'rxjs';
 import {Translation} from '../../types/translation.type';
 
 
@@ -11,24 +12,15 @@ import {Translation} from '../../types/translation.type';
 })
 export class TranslationNewFormComponent implements OnInit {
 
-  @Input() languages: string[];
-  @Input() translations: Translation[] = [];
+  @ViewChild('form') public form: NgForm;
+
+  @Input() languages$: BehaviorSubject<string[]>;
+  @Input() translations$: BehaviorSubject<Translation[]>;
 
   @Output() create = new EventEmitter<Translation>();
   @Output() cancel = new EventEmitter<void>();
 
   translation: Translation = TranslationNewFormComponent.getEmptyTranslation();
-
-  keyFormControl = new FormControl('', [
-    Validators.required,
-    (control: AbstractControl) => {
-      if (this.translations.find((value => value.key === control.value)) === undefined) {
-        return null;
-      } else {
-        return {'keyIsTaken': {value: control.value}};
-      }
-    }
-  ]);
 
   matcher = new ShowOnDirtyErrorStateMatcher();
 
@@ -46,14 +38,15 @@ export class TranslationNewFormComponent implements OnInit {
   }
 
   onSave() {
-    if (!this.keyFormControl.valid) {
-      this.keyFormControl.markAsDirty();
+    if (!this.form.valid) {
       return;
     }
 
     this.create.emit(this.translation);
 
+
     this.translation = TranslationNewFormComponent.getEmptyTranslation();
+    this.form.resetForm();
   }
 
   onCancel() {
