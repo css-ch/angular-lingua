@@ -50,7 +50,7 @@ export class TranslationsEditorComponent implements OnInit, OnDestroy {
           maxPatternLength: 64,
           minMatchCharLength: 1,
           keys: [
-            "key",
+            'key',
             ...languages.map(lang => `value.${lang}`) as any
           ]
         };

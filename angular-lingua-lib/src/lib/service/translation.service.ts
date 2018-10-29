@@ -1,25 +1,26 @@
 import {Inject, Injectable} from '@angular/core';
-import {LANGUAGE_TOKEN} from './translation.token';
-import {LocalesEntry} from '../../locales/locales-entry.type';
-import {LOCALES_TOKEN} from './locales/locales.token';
-import {LocalesMap} from './locales/locales-map.type';
 import {Subject} from 'rxjs';
+import {LANGUAGE_TOKEN} from '../language.token';
+import {Translation} from '../translation.type';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TranslationService {
-  private language: keyof LocalesEntry;
+  private language: string;
 
   public $language: Subject<string> = new Subject();
 
   constructor(
-    @Inject(LANGUAGE_TOKEN) defaultLang,
-    @Inject(LOCALES_TOKEN) private locales: LocalesMap) {
+    @Inject(LANGUAGE_TOKEN) defaultLang) {
     this.language = defaultLang;
   }
 
-  get(entry: LocalesEntry | string, opts?: { [k: string]: string }, lang?: keyof LocalesEntry): string {
+  get(entry: Translation, opts?: { [k: string]: string }, lang?: string): string {
+    if (entry === undefined || entry === null) {
+      throw Error('undefined Translation key');
+    }
+
     const translationList = this.getTranslationList(entry, lang);
 
     let str = '';
@@ -36,16 +37,11 @@ export class TranslationService {
     return str;
   }
 
-  public getTranslationList(entry: LocalesEntry | string, lang?: keyof LocalesEntry): { type: 'string' | 'key', value: string }[] {
+  public getTranslationList(entry: Translation, lang?: string): { type: 'string' | 'key', value: string }[] {
     lang = (lang) ? lang : this.language;
     const result = [];
     let m;
-    let str;
-    if (typeof entry === 'string') {
-      str = this.locales[entry][lang];
-    } else {
-      str = entry[lang];
-    }
+    let str = entry[lang];
 
     const removeEscapeFunction = (replace) => replace.slice(1);
 
@@ -69,7 +65,7 @@ export class TranslationService {
     return result;
   }
 
-  changeLanguage(lang: keyof LocalesEntry) {
+  changeLanguage(lang: string) {
     this.language = lang;
     this.$language.next(this.language);
   }

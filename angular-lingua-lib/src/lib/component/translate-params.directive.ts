@@ -1,11 +1,11 @@
 import {Directive, Input, TemplateRef} from '@angular/core';
 
 @Directive({
-  selector: '[appOptKey]'
+  selector: '[translateParams]'
 })
-export class OptKeyDirective {
+export class TranslateParamsDirective {
 
-  @Input('appOptKey') optKey: string;
+  @Input('translateParams') optKey: string;
 
   constructor(public templateRef: TemplateRef<any>) {
   }

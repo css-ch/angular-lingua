@@ -64,9 +64,6 @@ export class TranslationEditFormComponent implements OnInit, OnDestroy {
   }
 
   onTranslationDelete() {
-    if (!this.form.valid) {
-      return;
-    }
     this.translationDelete.emit(this.translation);
   }
 }

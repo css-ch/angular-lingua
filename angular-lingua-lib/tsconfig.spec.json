@@ -2,7 +2,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
+    "outDir": "./dist/out-tsc/spec",
     "sourceMap": true,
     "declaration": false,
     "module": "es2015",
@@ -16,6 +16,10 @@
     "lib": [
       "es2018",
       "dom"
+    ],
+    "types": [
+      "jasmine",
+      "node"
     ]
   },
   "angularCompilerOptions": {
@@ -26,8 +30,11 @@
     "strictInjectionParameters": true,
     "enableResourceInlining": true
   },
-  "exclude": [
-    "src/test.ts",
-    "**/*.spec.ts"
+  "files": [
+    "src/test.ts"
+  ],
+  "include": [
+    "**/*.spec.ts",
+    "**/*.d.ts"
   ]
 }

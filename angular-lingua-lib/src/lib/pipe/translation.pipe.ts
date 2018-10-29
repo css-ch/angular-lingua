@@ -1,8 +1,7 @@
 import {ChangeDetectorRef, OnDestroy, Pipe, PipeTransform} from '@angular/core';
-import {TranslationService} from './translation.service';
-import {LocalesEntry} from '../../locales/locales-entry.type';
+import {TranslationService} from '../service/translation.service';
 import {Subscription} from 'rxjs';
-import {LOCALES} from '../../locales/locales';
+import {Translation} from '../translation.type';
 
 @Pipe({
   name: 'i18n',
@@ -14,7 +13,7 @@ export class TranslationPipe implements PipeTransform, OnDestroy {
   // https://github.com/angular/angular/issues/15041
   //
 
-  private subscription$$: Subscription;
+  private readonly subscription$$: Subscription;
 
   constructor(
     private translationService: TranslationService,
@@ -24,11 +23,7 @@ export class TranslationPipe implements PipeTransform, OnDestroy {
     });
   }
 
-  transform(key: LocalesEntry | string, opts: { [k: string]: string }, lang: keyof LocalesEntry, ...rest: string[]): any {
-    if (key === undefined) {
-      throw Error('undefined Translation key');
-    }
-
+  transform(key: Translation, opts: { [k: string]: string }, lang: string, ...rest: string[]): any {
     return this.translationService.get(key, opts, lang);
   }
 

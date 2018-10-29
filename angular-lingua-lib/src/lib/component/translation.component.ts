@@ -8,23 +8,23 @@ import {
   QueryList,
   TemplateRef
 } from '@angular/core';
-import {TranslationService} from '../translation.service';
-import {LocalesEntry} from '../../../locales/locales-entry.type';
-import {OptKeyDirective} from '../opt-key.directive';
+import {TranslationService} from '../service/translation.service';
+import {Translation} from '../translation.type';
+import {TranslateParamsDirective} from './translate-params.directive';
 import {Subscription} from 'rxjs';
 
 @Component({
-  selector: 'app-translation',
+  selector: 'translate',
   templateUrl: './translation.component.html',
   styleUrls: ['./translation.component.css']
 })
 export class TranslationComponent implements OnChanges, AfterContentInit, OnInit, OnDestroy {
 
-  @ContentChildren(OptKeyDirective) optChildrenQueryList: QueryList<OptKeyDirective> = null;
+  @ContentChildren(TranslateParamsDirective) optChildrenQueryList: QueryList<TranslateParamsDirective> = null;
 
-  @Input('key') key: LocalesEntry | string;
+  @Input('key') key: Translation;
 
-  @Input() lang: keyof LocalesEntry;
+  @Input() lang: string;
 
   public optionMap: { [k: string]: TemplateRef<any> };
 
