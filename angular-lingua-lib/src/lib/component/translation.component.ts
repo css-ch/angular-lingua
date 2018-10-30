@@ -22,7 +22,7 @@ export class TranslationComponent implements OnChanges, AfterContentInit, OnInit
 
   @ContentChildren(TranslateParamsDirective) optChildrenQueryList: QueryList<TranslateParamsDirective> = null;
 
-  @Input('key') key: Translation;
+  @Input() key: Translation;
 
   @Input() lang: string;
 
