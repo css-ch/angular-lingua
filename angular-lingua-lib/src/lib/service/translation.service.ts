@@ -1,5 +1,4 @@
 import {Inject, Injectable} from '@angular/core';
-import {Subject} from 'rxjs';
 import {LANGUAGE_TOKEN} from '../language.token';
 import {Translation} from '../translation.type';
 
@@ -7,9 +6,7 @@ import {Translation} from '../translation.type';
   providedIn: 'root'
 })
 export class TranslationService {
-  private language: string;
-
-  public $language: Subject<string> = new Subject();
+  private readonly language: string;
 
   constructor(
     @Inject(LANGUAGE_TOKEN) defaultLang) {
@@ -63,10 +60,5 @@ export class TranslationService {
     result.push({type: 'string', value: str.replace(/\\{{\w+}}/gm, removeEscapeFunction)});
 
     return result;
-  }
-
-  changeLanguage(lang: string) {
-    this.language = lang;
-    this.$language.next(this.language);
   }
 }

@@ -3,22 +3,20 @@ import {
   Component,
   ContentChildren,
   Input,
-  OnChanges, OnDestroy,
-  OnInit,
+  OnChanges,
   QueryList,
   TemplateRef
 } from '@angular/core';
 import {TranslationService} from '../service/translation.service';
 import {Translation} from '../translation.type';
 import {TranslateParamsDirective} from './translate-params.directive';
-import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'translate',
   templateUrl: './translation.component.html',
   styleUrls: ['./translation.component.css']
 })
-export class TranslationComponent implements OnChanges, AfterContentInit, OnInit, OnDestroy {
+export class TranslationComponent implements OnChanges, AfterContentInit {
 
   @ContentChildren(TranslateParamsDirective) optChildrenQueryList: QueryList<TranslateParamsDirective> = null;
 
@@ -30,16 +28,8 @@ export class TranslationComponent implements OnChanges, AfterContentInit, OnInit
 
   public translationList: { type: 'string' | 'key', value: string }[];
 
-  private subscription$$: Subscription;
-
   constructor(
     private translationService: TranslationService) {
-  }
-
-  ngOnInit() {
-    this.subscription$$ = this.translationService.$language.subscribe(() => {
-      this.updateTranslations();
-    });
   }
 
   ngOnChanges() {
@@ -65,12 +55,6 @@ export class TranslationComponent implements OnChanges, AfterContentInit, OnInit
           throw Error(`could not find Key: ${translation.value}`);
         }
       }
-    }
-  }
-
-  ngOnDestroy(): void {
-    if (this.subscription$$) {
-      this.subscription$$.unsubscribe();
     }
   }
 }
