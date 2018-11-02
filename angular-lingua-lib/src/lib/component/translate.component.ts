@@ -3,20 +3,22 @@ import {
   Component,
   ContentChildren,
   Input,
-  OnChanges,
+  OnChanges, OnDestroy,
   QueryList,
   TemplateRef
 } from '@angular/core';
 import {TranslationService} from '../service/translation.service';
 import {Translation} from '../translation.type';
 import {TranslateParamsDirective} from './translate-params.directive';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'translate',
-  templateUrl: './translation.component.html',
-  styleUrls: ['./translation.component.css']
+  templateUrl: './translate.component.html',
+  styles: []
 })
-export class TranslationComponent implements OnChanges, AfterContentInit {
+
+export class TranslateComponent implements OnChanges, AfterContentInit, OnDestroy {
 
   @ContentChildren(TranslateParamsDirective) optChildrenQueryList: QueryList<TranslateParamsDirective> = null;
 
@@ -28,8 +30,11 @@ export class TranslationComponent implements OnChanges, AfterContentInit {
 
   public translationList: { type: 'string' | 'key', value: string }[];
 
+  public language$$: Subscription;
+
   constructor(
     private translationService: TranslationService) {
+    this.language$$ = this.translationService.$language.subscribe(() => this.updateTranslations());
   }
 
   ngOnChanges() {
@@ -57,4 +62,12 @@ export class TranslationComponent implements OnChanges, AfterContentInit {
       }
     }
   }
+
+  ngOnDestroy(): void {
+    if (this.language$$) {
+      this.language$$.unsubscribe();
+    }
+  }
+
+
 }

@@ -1,22 +1,49 @@
-import {Pipe, PipeTransform} from '@angular/core';
+import {ChangeDetectorRef, OnDestroy, Pipe, PipeTransform} from '@angular/core';
+import {isEqual} from '../helper';
 import {TranslationService} from '../service/translation.service';
 import {Translation} from '../translation.type';
+import {Subscription} from 'rxjs';
 
 @Pipe({
   name: 'i18n',
-  pure: true
+  pure: false
 })
-export class TranslationPipe implements PipeTransform {
+export class TranslationPipe implements PipeTransform, OnDestroy {
   //
   // There is currently no way to trigger change detection from inside a pure Pipe.
   // https://github.com/angular/angular/issues/15041
   //
 
+  private readonly language$$: Subscription;
+
+  private markForTransform = true;
+  private value: string;
+  private oldTranslation: Translation;
+  private oldOpts: { [k: string]: string };
+
   constructor(
-    private translationService: TranslationService) {
+    private translationService: TranslationService,
+    private changeDetectorRef: ChangeDetectorRef) {
+    this.language$$ = this.translationService.$language.subscribe(() => {
+      this.markForTransform = true;
+      this.changeDetectorRef.detectChanges();
+    });
   }
 
-  transform(key: Translation, opts: { [k: string]: string }, lang: string, ...rest: string[]): any {
-    return this.translationService.get(key, opts, lang);
+  transform(translation: Translation, opts: { [k: string]: string }, lang: string, ...rest: string[]): string {
+    if (this.markForTransform || this.oldTranslation !== translation || !isEqual(this.oldOpts, opts)) {
+      this.value = this.translationService.get(translation, opts, lang);
+      this.oldTranslation = translation;
+      this.oldOpts = opts;
+      this.markForTransform = false;
+    }
+
+    return this.value;
+  }
+
+  ngOnDestroy(): void {
+    if (this.language$$) {
+      this.language$$.unsubscribe();
+    }
   }
 }

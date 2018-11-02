@@ -1,16 +1,16 @@
 import {Inject, Injectable} from '@angular/core';
 import {LANGUAGE_TOKEN} from '../language.token';
 import {Translation} from '../translation.type';
+import {Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TranslationService {
-  private readonly language: string;
+  public $language: Subject<string> = new Subject();
 
   constructor(
-    @Inject(LANGUAGE_TOKEN) defaultLang) {
-    this.language = defaultLang;
+    @Inject(LANGUAGE_TOKEN) private language) {
   }
 
   get(entry: Translation, opts?: { [k: string]: string }, lang?: string): string {
@@ -40,6 +40,10 @@ export class TranslationService {
     let m;
     let str = entry[lang];
 
+    if (str === undefined) {
+      throw new Error(`translation not found. entry: ${JSON.stringify(entry)}, lang: ${lang}`);
+    }
+
     const removeEscapeFunction = (replace) => replace.slice(1);
 
     while ((m = /(^|[^\\]){{\w+}}/gm.exec(str)) !== null) {
@@ -58,7 +62,11 @@ export class TranslationService {
     }
 
     result.push({type: 'string', value: str.replace(/\\{{\w+}}/gm, removeEscapeFunction)});
-
     return result;
+  }
+
+  public changeLanguage(newLang: string) {
+    this.language = newLang;
+    this.$language.next(newLang);
   }
 }
