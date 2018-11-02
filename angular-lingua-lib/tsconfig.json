@@ -14,20 +14,16 @@
       "node_modules/@types"
     ],
     "lib": [
-      "es2018",
+      "es2017",
       "dom"
-    ]
-  },
-  "angularCompilerOptions": {
-    "annotateForClosureCompiler": true,
-    "skipTemplateCodegen": true,
-    "strictMetadataEmit": true,
-    "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true,
-    "enableResourceInlining": true
-  },
-  "exclude": [
-    "src/test.ts",
-    "**/*.spec.ts"
-  ]
+    ],
+    "paths": {
+      "angular-lingua-lib": [
+        "dist/angular-lingua-lib"
+      ],
+      "angular-lingua-lib/*": [
+        "dist/angular-lingua-lib/*"
+      ]
+    }
+  }
 }
