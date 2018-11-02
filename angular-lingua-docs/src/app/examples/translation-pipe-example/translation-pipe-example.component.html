@@ -1,0 +1,37 @@
+<h2>Simple Example with no Parameters</h2>
+<h3>example</h3>
+<p>
+  {{ LOCALES.TITLE | i18n }}
+</p>
+<h3>code</h3>
+<pre>
+  <code class="language-html" [textContent]="code1">
+  </code>
+</pre>
+
+<h2>Simple Example with Parameters</h2>
+<h3>example</h3>
+<p>
+  {{ LOCALES.GREETING_MALE | i18n: {NAME: "Hans Peter"} }}
+</p>
+<h3>code</h3>
+<pre>
+  <code class="language-html" [textContent]="code2">
+  </code>
+</pre>
+
+<h2>Simple Example with fixed language</h2>
+<h3>example</h3>
+<p>
+  {{ LOCALES.TITLE | i18n: {}:'ita' }}
+</p>
+<h3>code</h3>
+<pre>
+  <code class="language-html" [textContent]="code3">
+  </code>
+</pre>
+
+<h2>Change Language</h2>
+<button (click)="changeLang('deu')">deu</button>
+<button (click)="changeLang('ita')">ita</button>
+<button (click)="changeLang('fra')">fra</button>
