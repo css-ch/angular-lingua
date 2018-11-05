@@ -17,18 +17,14 @@ import {ActionOptions} from './types/action-options';
 import {ApplicationOption} from './types/application-option';
 
 export default async (
-	{TRANSLATION_FILE_NAME, LANGUAGES_FILE_NAME, USE_DOUBLE_QUOTES, IS_PRODUCTION, LOCALES_DIR}: ApplicationOption,
+	{USE_DOUBLE_QUOTES, IS_PRODUCTION, LOCALES_FILE_PATH, LANGUAGES}: ApplicationOption,
 	onServerStarted: (url: string) => void,
 ): Promise<void> => {
 	const PUBLIC_PATH = path.join(__dirname, '../public');
 	const PORT = process.env.PORT || await getPort({port: 9090});
 
-	const TRANSLATIONS_FILE_PATH = path.join(LOCALES_DIR, TRANSLATION_FILE_NAME);
-	const LANGUAGES_FILE_PATH = path.join(LOCALES_DIR, LANGUAGES_FILE_NAME);
 
-	const ACTION_OPTIONS: ActionOptions = {TRANSLATIONS_FILE_PATH, LANGUAGES_FILE_PATH, USE_DOUBLE_QUOTES};
-
-	console.log(TRANSLATIONS_FILE_PATH);
+	const ACTION_OPTIONS: ActionOptions = {LOCALES_FILE_PATH, USE_DOUBLE_QUOTES, LANGUAGES};
 
 	const app = express();
 	const server = http.createServer(app);
@@ -70,14 +66,16 @@ export default async (
 		});
 	});
 
-	getFileWatcher(TRANSLATIONS_FILE_PATH).on('change', async () => {
+	getFileWatcher(LOCALES_FILE_PATH).on('change', async () => {
 		const translations = await getTranslationsAction({}, ACTION_OPTIONS);
 		broadcast(translations);
 	});
 
 	server.listen(PORT, () => {
+		const URL = `http://localhost:${PORT}`;
 		console.log(`starting server on PORT:${PORT} in PRODUCTION:${IS_PRODUCTION}`);
-		onServerStarted(`http://localhost:${PORT}`);
+		console.log(`it can be accessed with: ${URL}`);
+		onServerStarted(URL);
 	});
 
 	function broadcast(data: any) {

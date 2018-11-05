@@ -1,9 +1,4 @@
 export const LOCALES =  {
-  'FLAG': {
-    'deu': 'dies \"{{FLAG}}\" ist eine Flagge',
-    'ita': 'questa \"{{FLAG}} è una bandiera',
-    'fra': 'c\"est \"{{FLAG}}\" un drapeau'
-  },
   'TITLE': {
     'deu': 'übersetzung framework',
     'ita': 'quadro di traduzione',
@@ -13,5 +8,10 @@ export const LOCALES =  {
     'deu': 'hallo herr {{NAME}}',
     'ita': 'ciao signor {{NAME}}',
     'fra': 'bonjour monsieur {{NAME}}'
+  },
+  'FLAGd': {
+    'deu': 'dies \"{{FLAG}}\" ist eine Flagge',
+    'ita': 'questa \"{{FLAG}} è una bandiera',
+    'fra': 'c\"est \"{{FLAG}}\" un drapeau'
   }
 };
