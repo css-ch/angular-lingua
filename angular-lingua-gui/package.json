@@ -10,10 +10,9 @@
     "tsc": "tsc",
     "ts-node": "ts-node",
     "build-backend": "tsc -p ./backend",
-    "start-backend": "ts-node --project ./backend/tsconfig.json ./backend/src/index.ts",
-    "start-backend2": "npm run start-backend translation-gui ./test-data",
-    "watch-node-backend": "cd ./backend && nodemon ./dist/index.js ../test-data",
-    "watch-ts-backend": "cd ./backend && tsc -w",
+    "start-noconfig-backend": "ts-node --project ./backend/tsconfig.json ./backend/src/index.ts",
+    "start-backend": "npm run start-noconfig-backend ./test-data",
+    "watch-node-backend": "nodemon -e ts --watch backend --exec npm run start-backend",
     "build-frontend": "ng build",
     "start-frontend": "ng serve"
   },
