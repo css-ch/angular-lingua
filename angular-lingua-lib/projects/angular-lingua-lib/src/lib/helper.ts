@@ -1,9 +1,12 @@
 export function isEqual(a, b): boolean {
-  if (a === b) {
-    return true;
-  }
 
   if (a === undefined || b === undefined || a === null || b === null) {
+    if (a === undefined && b === undefined) {
+      return true;
+    }
+    if (a === null && b === null) {
+      return true;
+    }
     return false;
   }
 

@@ -20,7 +20,8 @@ export class TranslationPipe implements PipeTransform, OnDestroy {
   private markForTransform = true;
   private value: string;
   private oldTranslation: Translation;
-  private oldOpts: { [k: string]: string };
+  private oldOpts: { [k: string]: string } = {};
+  private oldLang: string;
 
   constructor(
     private translationService: TranslationService,
@@ -31,12 +32,13 @@ export class TranslationPipe implements PipeTransform, OnDestroy {
     });
   }
 
-  transform(translation: Translation, opts: { [k: string]: string }, lang: string, ...rest: string[]): string {
-    if (this.markForTransform || this.oldTranslation !== translation || !isEqual(this.oldOpts, opts)) {
+  transform(translation: Translation, opts?: { [k: string]: string }, lang?: string, ...rest: string[]): string {
+    if (this.markForTransform || this.oldTranslation !== translation || !isEqual(this.oldOpts, opts) || this.oldLang !== lang) {
       this.value = this.translationService.get(translation, opts, lang);
       this.oldTranslation = translation;
-      this.oldOpts = opts;
+      this.oldLang = lang;
       this.markForTransform = false;
+      Object.assign(this.oldOpts, opts);
     }
 
     return this.value;
