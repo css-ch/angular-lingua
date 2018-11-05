@@ -8,6 +8,7 @@
           name="key"
           required
           [keyTaken]="translations$"
+          [keyTakenIgnore]="translation.key"
           [ngModel]="translation.key"
           (ngModelChange)="onTranslationKeyChange(translation.key, $event);"
           [errorStateMatcher]="matcher"

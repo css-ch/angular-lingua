@@ -29,6 +29,10 @@ export class TranslationService {
     this.socket$ = new WebSocketSubject(socketUrl);
     this.translationEvent$ = this.listenOnSocketEvent<TranslationsEvent>(TRANSLATIONS_EVENT_NAME);
     this.languageEvent$ = this.listenOnSocketEvent<LanguagesEvent>(LANGUAGES_EVENT_NAME);
+
+    this.socket$.subscribe((event) => {
+      console.log("received event: ", event)
+    })
   }
 
 
@@ -39,6 +43,7 @@ export class TranslationService {
   }
 
   public send(socketEvent: SocketEvent) {
+    console.log("send event: ", socketEvent);
     this.socket$.next(socketEvent);
   }
 }

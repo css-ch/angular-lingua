@@ -12,12 +12,15 @@ import {Translation} from '../types/translation.type';
 })
 export class KeyTakenValidatorDirective implements Validator {
   @Input('keyTaken') translations$: BehaviorSubject<Translation[]>;
+  @Input() keyTakenIgnore: string;
 
   constructor() {
   }
 
   validate(control: FormControl) {
-    if (this.translations$.value.find((value => value.key === control.value)) === undefined) {
+    if (control.value === this.keyTakenIgnore) {
+      return null;
+    } else if (this.translations$.value.find((value => value.key === control.value)) === undefined) {
       return null;
     } else {
       return {'keyIsTaken': {value: control.value}};
