@@ -81,3 +81,19 @@ you are now able to use your translations in appComponent.
 you can find the usage example of the others in the translation modules section
 
 ## GUI
+
+you can install the GUI with
+
+```bash
+npm i --save-dev @cssinsurance/angular-lingua-gui
+```
+
+then you can create a run script in your package.json
+
+```json
+{
+  "scripts": {
+    "@cssinsurance/angular-lingua-gui": "angular-lingua-gui src/locales/locales.ts"
+  }
+}
+```

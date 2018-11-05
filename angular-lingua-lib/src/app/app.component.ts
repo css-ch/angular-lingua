@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {TranslationService} from '../../projects/angular-lingua-lib/src/lib/service/translation.service';
 import {LOCALES} from '../locales/locales';
 
 @Component({
@@ -8,4 +9,26 @@ import {LOCALES} from '../locales/locales';
 })
 export class AppComponent {
   readonly LOCALES = LOCALES;
+
+  readonly links = [
+    {href: 'home', text: 'Home'},
+    {href: 'pipe-example', text: 'I18n pipe'},
+    {href: 'directive-example', text: 'I18n directive'},
+    {href: 'service-example', text: 'Translation service'},
+    {href: 'component-example', text: 'Translate component'},
+  ];
+
+  readonly languages = [
+    {short: 'deu', text: 'German'},
+    {short: 'ita', text: 'Italian'},
+    {short: 'fra', text: 'French'},
+  ];
+
+  constructor(public translationService: TranslationService) {
+  }
+
+  changeLanguage(langShort: string) {
+    this.translationService.changeLanguage(langShort);
+  }
+
 }

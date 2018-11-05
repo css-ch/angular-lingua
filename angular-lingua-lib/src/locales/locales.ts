@@ -11,7 +11,7 @@ export const LOCALES = {
   },
   'FLAG': {
     'deu': 'dies \"{{FLAG}}\" ist eine Flagge',
-    'ita': 'questa \"{{FLAG}} è una bandiera',
+    'ita': 'questa \"{{FLAG}}\" è una bandiera',
     'fra': 'c\"est \"{{FLAG}}\" un drapeau'
   }
 };

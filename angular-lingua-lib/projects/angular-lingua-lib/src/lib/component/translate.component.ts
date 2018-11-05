@@ -22,7 +22,7 @@ export class TranslateComponent implements OnChanges, AfterContentInit, OnDestro
 
   @ContentChildren(TranslateParamsDirective) optChildrenQueryList: QueryList<TranslateParamsDirective> = null;
 
-  @Input() key: Translation;
+  @Input() key: Translation = null;
 
   @Input() lang: string;
 
@@ -34,7 +34,9 @@ export class TranslateComponent implements OnChanges, AfterContentInit, OnDestro
 
   constructor(
     private translationService: TranslationService) {
-    this.language$$ = this.translationService.$language.subscribe(() => this.updateTranslations());
+    this.language$$ = this.translationService.$language.subscribe(() => {
+      this.updateTranslations();
+    });
   }
 
   ngOnChanges() {
@@ -48,6 +50,9 @@ export class TranslateComponent implements OnChanges, AfterContentInit, OnDestro
   }
 
   updateTranslations() {
+    if (this.key === null) {
+      return;
+    }
     this.translationList = this.translationService.getTranslationList(this.key, this.lang);
     this.optionMap = {};
     this.optChildrenQueryList.forEach((optChild) => {

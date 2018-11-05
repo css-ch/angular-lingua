@@ -1,16 +1,17 @@
 import {Inject, Injectable} from '@angular/core';
 import {LANGUAGE_TOKEN} from '../language.token';
 import {Translation} from '../translation.type';
-import {Subject} from 'rxjs';
+import {BehaviorSubject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TranslationService {
-  public $language: Subject<string> = new Subject();
+  public $language: BehaviorSubject<string>;
 
   constructor(
     @Inject(LANGUAGE_TOKEN) private language) {
+    this.$language = new BehaviorSubject(language);
   }
 
   get(entry: Translation, opts?: { [k: string]: string }, lang?: string): string {

@@ -1,0 +1,11 @@
+<h1>I18n directive Examples</h1>
+
+<h2>Basic example</h2>
+<p [i18n]="LOCALES.TITLE"></p>
+
+<h2>Example with Parameters</h2>
+<p [i18n]="LOCALES.GREETING_MALE" [i18nParams]="{NAME: 'Hans Peter'}"></p>
+
+<h2>Example with fixed language</h2>
+<p [i18n]="LOCALES.TITLE" i18nLanguage="ita"></p>
+

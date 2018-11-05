@@ -1,4 +1,5 @@
 import {ChangeDetectorRef, OnDestroy, Pipe, PipeTransform} from '@angular/core';
+import {skip} from 'rxjs/operators';
 import {isEqual} from '../helper';
 import {TranslationService} from '../service/translation.service';
 import {Translation} from '../translation.type';
@@ -24,7 +25,7 @@ export class TranslationPipe implements PipeTransform, OnDestroy {
   constructor(
     private translationService: TranslationService,
     private changeDetectorRef: ChangeDetectorRef) {
-    this.language$$ = this.translationService.$language.subscribe(() => {
+    this.language$$ = this.translationService.$language.pipe(skip(1)).subscribe(() => {
       this.markForTransform = true;
       this.changeDetectorRef.detectChanges();
     });
