@@ -6,7 +6,7 @@ import {TranslateComponent} from './component/translate.component';
 import {CommonModule} from '@angular/common';
 import {BrowserModule} from '@angular/platform-browser';
 import {TranslateParamsDirective} from './component/translate-params.directive';
-import { I18nDirective } from './directive/i18n.directive';
+import {I18nDirective} from './directive/i18n.directive';
 
 @NgModule({
   imports: [CommonModule, BrowserModule],
