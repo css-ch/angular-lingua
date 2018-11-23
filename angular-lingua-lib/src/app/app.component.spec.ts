@@ -1,5 +1,10 @@
-import { TestBed, async } from '@angular/core/testing';
-import { AppComponent } from './app.component';
+import {TestBed, async} from '@angular/core/testing';
+import {MatIconModule, MatSidenavModule, MatToolbarModule} from '@angular/material';
+import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {RouterTestingModule} from '@angular/router/testing';
+import {TranslationModule} from '../../projects/angular-lingua-lib/src/lib/translation.module';
+import {AppComponent} from './app.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -7,6 +12,15 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      imports: [
+        TranslationModule.forRoot('deu'),
+        MatSidenavModule,
+        MatIconModule,
+        MatToolbarModule,
+        RouterTestingModule,
+        BrowserModule,
+        BrowserAnimationsModule,
+      ]
     }).compileComponents();
   }));
 
@@ -16,16 +30,5 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'angular-lingua-lib'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('angular-lingua-lib');
-  });
 
-  it('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to angular-lingua-lib!');
-  });
 });

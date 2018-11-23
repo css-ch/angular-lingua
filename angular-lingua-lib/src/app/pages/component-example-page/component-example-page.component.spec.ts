@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {MatIconModule} from '@angular/material';
+import {TranslationModule} from '../../../../projects/angular-lingua-lib/src/lib/translation.module';
 
 import { ComponentExamplePageComponent } from './component-example-page.component';
 
@@ -8,7 +10,8 @@ describe('ComponentExamplePageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ComponentExamplePageComponent ]
+      declarations: [ ComponentExamplePageComponent ],
+      imports: [TranslationModule.forRoot('deu'), MatIconModule]
     })
     .compileComponents();
   }));
