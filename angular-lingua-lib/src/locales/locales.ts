@@ -1,6 +1,6 @@
-export const LOCALES =  {
+export const LOCALES = {
   'GREETING_MALE': {
-    'deu': 'halloo herr {{NAME}}',
+    'deu': 'hallo herr {{NAME}}',
     'ita': 'ciao signor {{NAME}}',
     'fra': 'bonjour monsieur {{NAME}}'
   },
