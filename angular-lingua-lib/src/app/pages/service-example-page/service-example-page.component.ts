@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {TranslationService} from '../../../../projects/angular-lingua-lib/src/lib/service/translation.service';
+import {TranslationService} from '../../../../projects/angular-lingua-lib/src/public_api';
 import {LOCALES} from '../../../locales/locales';
 
 @Component({
