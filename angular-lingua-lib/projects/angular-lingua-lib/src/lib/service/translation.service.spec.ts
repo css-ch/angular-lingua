@@ -36,4 +36,13 @@ describe('TranslationService', () => {
     const smTranslation = 'Hello \\{{World}}';
     expect(service.get({[defaultLang]: smTranslation})).toBe('Hello {{World}}');
   });
+
+
+  it('#get should have no \'{}\' characters', () => {
+    const smTranslation = '{{World}} Hello';
+    const translated = service.get({[defaultLang]: smTranslation}, {World: 'World'});
+    const containsBrackets = translated.indexOf('{') !== -1 || translated.indexOf('}') !== -1;
+
+    expect(containsBrackets).toBeFalsy();
+  });
 });
