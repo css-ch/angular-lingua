@@ -80,4 +80,52 @@ export class AppComponent {
 
 You have three options to translate in your template. With all of these options you can pass variables into the translation or fix the language.
 
+### Directive
 
+```html
+<p [i18n]="LOCALES.TITLE"></p>
+
+<!-- Example with Parameters -->
+<p [i18n]="LOCALES.GREETING_MALE" [i18nParams]="{NAME: 'Hans Peter'}"></p>
+
+<!-- Example with fixed language -->
+<p [i18n]="LOCALES.TITLE" i18nLanguage="ita"></p>
+```
+
+### Pipe
+
+```html
+<p>
+  {{ LOCALES.TITLE | i18n }}
+</p>
+
+<!-- Example with Parameters -->
+<p>
+  {{ LOCALES.GREETING_MALE | i18n: {NAME: "Hans Peter"} }}
+</p>
+
+<!-- Example with fixed language -->
+<p>
+  {{ LOCALES.TITLE | i18n: {} : 'ita' }}
+</p>
+
+### Component
+
+Special about the component is that you can replace your Variable placeholders with whole Components.
+
+```html
+<translate [key]="LOCALES.TITLE">
+</translate>
+
+<!-- Example with Parameters -->
+<translate [key]="LOCALES.FLAG">
+  <mat-icon *appOptKey="'FLAG'">flag</mat-icon>
+</translate>
+
+<!-- Example with fixed language -->
+<translate [key]="LOCALES.FLAG">
+  <ng-template appOptKey="FLAG">
+    <mat-icon>flag</mat-icon>
+  </ng-template>
+</translate>
+```
