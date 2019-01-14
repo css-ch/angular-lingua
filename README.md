@@ -164,7 +164,9 @@ this.translationService.changeLanguage("fra");
 
 ## GUI
 
-The GUI can be installed over npm.
+With this web UI you have a simple way to search update add and delete your translations.
+
+It can be installed over npm.
 
 ```bash
 npm i --save-dev @cssinsurance/angular-lingua-gui
@@ -179,3 +181,5 @@ then you can create a run script in your package.json. the first parameter is wh
   }
 }
 ```
+
+![alt text](./documents/screenshot-angular-lingua-gui-1.png "Screenshot Angular Lingua GUI 1")
