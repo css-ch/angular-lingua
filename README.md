@@ -130,3 +130,36 @@ Special about the component is that you can replace your Variable placeholders w
   </ng-template>
 </translate>
 ```
+
+## Usage with service
+
+you can inject the service like any other.
+```typescript
+constructor(private translationService: TranslationService) {}
+```
+
+```typescript
+  basicExample() {
+    const result = this.translationService.get(LOCALES.TITLE);
+    console.log(result);
+  }
+
+  exampleWithParameters() {
+    const result = this.translationService.get(LOCALES.GREETING_MALE, {NAME: 'Hans Peter'});
+    console.log(result);
+  }
+
+  examplesWithFixedLanguage() {
+    const result = this.translationService.get(LOCALES.TITLE, {}, 'ita');
+    console.log(result);
+  }
+```
+## Switching language at runtime
+
+When you change the language at runtime all the translations will be updated.
+
+```typescript
+this.translationService.changeLanguage("fra");
+```
+
+
