@@ -5,18 +5,15 @@ AngularLingua is an easy to use Translation Library with Typescript autocompleti
 ## Important
 If you want the Compile-time safety to work you have to build it with aot enabled.
 
-## Getting started
+## install / integrate
 
-First, you need to install the library.
-
+First you need to install the npm module:
 ```bash
 npm i @cssinsurance/angular-lingua
 ```
-
-then you can register it in your app module. The language you set in the forRoot method will be the Default language. it can later be changed at runtime.
+To use angular-lingua in your project you have to import the module in your AppModule with a default language. This language can be changed at runtime.
 
 ```typescript
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { TranslationModule } from '@cssinsurance/angular-lingua';
 import { AppComponent } from './app.component';
@@ -26,8 +23,8 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule,
-    TranslationModule.forRoot('deu')
+    TranslationModule.forRoot('deu'),
+    ...
   ],
   providers: [],
   bootstrap: [AppComponent]
@@ -35,26 +32,13 @@ import { AppComponent } from './app.component';
 export class AppModule { }
 ```
 
-in other components, you can just include it without the forRoot method.
+## Translation file
 
-```typescript
-...
-import { TranslationModule } from '@cssinsurance/angular-lingua';
+All your translations are in a single Typescript file.
+this file could be located at: src/locales/locales.ts. important ist that it expots all the translations under 'LOCALES'.
 
-@NgModule({
-  ...
-  imports: [
-    TranslationModule
-  ],
-  ...
-})
-export class SomeModule { }
-```
-
-you then need to create a file where you want to store your translations.
-e. g. src/locales/locales.ts
-
-You can have variables in your Translations with two curly braces like "{{NAME}}". to escape a variable you can do it like this "\\\\{{NAME}}".
+Your translation file is composed of translations keys, whom hold key value of the lanuagekey and the actual translation.
+In your translations you can have variables with two curly braces. Those you can replace at runtime.
 
 ```typescript
 export const LOCALES =  {
@@ -70,16 +54,15 @@ export const LOCALES =  {
   },
   'FLAG': {
     'deu': 'dies \"{{FLAG}}\" ist eine Flagge',
-    'ita': 'questa \"{{FLAG}} è una bandiera',
+    'ita': 'questa \"{{FLAG}}\" è una bandiera',
     'fra': 'c\"est \"{{FLAG}}\" un drapeau'
   }
 };
 ```
 
-It is important that you use this structure. When you want the Translation GUI to work properly.
+## Usage inside template
 
-To use your translations in a component you first have to import it
-into object scope.
+To use the translations in the template of a component you have to copy it into a member variable. Thus is then accesable in the template.
 
 ```typescript
 import {Component} from '@angular/core';
@@ -95,23 +78,6 @@ export class AppComponent {
 }
 ```
 
-you are now able to use your translations in appComponent.   
-You can find the different methods of doing a translation in the specific wiki pages.
+You have three options to translate in your template. With all of these options you can pass variables into the translation or fix the language.
 
-## GUI
 
-you can install the GUI with
-
-```bash
-npm i --save-dev @cssinsurance/angular-lingua-gui
-```
-
-then you can create a run script in your package.json. the first parameter is where your location file is stored. After that, you can specify the language keys.
-
-```json
-{
-  "scripts": {
-    "@cssinsurance/angular-lingua-gui": "angular-lingua-gui src/locales/locales.ts deu ita fra"
-  }
-}
-```
