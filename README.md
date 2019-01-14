@@ -108,6 +108,7 @@ You have three options to translate in your template. With all of these options 
 <p>
   {{ LOCALES.TITLE | i18n: {} : 'ita' }}
 </p>
+```
 
 ### Component
 
