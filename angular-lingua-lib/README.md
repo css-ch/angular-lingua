@@ -1,99 +1,27 @@
-# AngularLingua
+# TestWorkspace
 
-Is a Translation framework for Angular.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.1.
 
-## Getting started
+## Development server
 
-First you need to install the library.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-```bash
-npm i @cssinsurance/angular-lingua
-```
+## Code scaffolding
 
-then you can register it in your app module.
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-```typescript
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { TranslationModule } from '@cssinsurance/angular-lingua';
-import { AppComponent } from './app.component';
+## Build
 
-@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    TranslationModule.forRoot('deu')
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
-```
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-you then need to create a file where you want to store your translations.
-e. g. src/locales/locales.ts
+## Running unit tests
 
-```typescript
-export const LOCALES =  {
-  'TITLE': {
-    'deu': 'übersetzung framework',
-    'ita': 'quadro di traduzione',
-    'fra': 'cadre de traduction'
-  },
-  'GREETINGS': {
-    'GREETING_MALE': {
-      'deu': 'hallo herr {{NAME}}',
-      'ita': 'ciao signor {{NAME}}',
-      'fra': 'bonjour monsieur {{NAME}}'
-    }
-  },
-  'FLAG': {
-    'deu': 'dies \"{{FLAG}}\" ist eine Flagge',
-    'ita': 'questa \"{{FLAG}} è una bandiera',
-    'fra': 'c\"est \"{{FLAG}}\" un drapeau'
-  }
-};
-```
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-It is important that you use this structure.
-you can nest your translations.
+## Running end-to-end tests
 
-To use your translations in a component you first have to import it
-into object scope.
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-```typescript
-import {Component} from '@angular/core';
-import {LOCALES} from '../locales/locales';
+## Further help
 
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
-})
-export class AppComponent {
-  readonly LOCALES = LOCALES;
-}
-```
-
-you are now able to use your translations in appComponent.   
-you can find the usage example of the others in the translation modules section
-
-## GUI
-
-you can install the GUI with
-
-```bash
-npm i --save-dev @cssinsurance/angular-lingua-gui
-```
-
-then you can create a run script in your package.json
-
-```json
-{
-  "scripts": {
-    "@cssinsurance/angular-lingua-gui": "angular-lingua-gui src/locales/locales.ts"
-  }
-}
-```
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
