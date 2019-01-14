@@ -1,44 +1,20 @@
-import fs from 'fs';
-
 import chokidar, {FSWatcher} from 'chokidar';
+import fs from 'fs';
+import requireFromString from 'require-from-string';
+import * as ts from 'typescript';
 import {TranslationJson} from './types/translation-json';
 
 const watchers: { [k: string]: FSWatcher } = {};
 
 export async function getTranslations(translationFilePath: string): Promise<TranslationJson> {
-	let localesString = await getJsonStringFromFile(translationFilePath);
-	const usesSingleQuote = localesString.lastIndexOf('\'') > localesString.lastIndexOf('"');
 
-	if (usesSingleQuote) {
-		localesString = localesString.replace(/[^\\]"/g, (e) => `${e.charAt(0)}\\"`);
-		localesString = localesString.replace(/[^\\]'/g, (e) => `${e.charAt(0)}"`);
-	}
+	const rawFile = await getFile(translationFilePath);
 
-	localesString = localesString.replace(/\\'/g, '\'');
+	const transpileOutput = ts.transpileModule(rawFile, {
+		compilerOptions: {module: ts.ModuleKind.CommonJS}
+	});
 
-	return JSON.parse(localesString);
-}
-
-export async function getLanguages(languageFilePath: string): Promise<string[]> {
-	let languagesString = await getJsonStringFromFile(languageFilePath);
-
-	languagesString = languagesString.replace('{', '');
-	languagesString = languagesString.replace('}', '');
-	languagesString = languagesString.replace(/\n/gm, '');
-	languagesString = languagesString.replace(/[ ]/gm, '');
-
-	const languageArray = languagesString.split(':string;');
-	languageArray.pop();
-	return languageArray;
-}
-
-export async function getJsonStringFromFile(path: string): Promise<string> {
-	const data = await getFile(path);
-
-	const START_OF_JSON = data.indexOf('{');
-	const END_OF_JSON = data.lastIndexOf('}') + 1;
-
-	return data.substring(START_OF_JSON, END_OF_JSON);
+	return requireFromString(transpileOutput.outputText).LOCALES;
 }
 
 export async function saveTranslationToFile(
