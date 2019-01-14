@@ -162,4 +162,20 @@ When you change the language at runtime all the translations will be updated.
 this.translationService.changeLanguage("fra");
 ```
 
+## GUI
 
+The GUI can be installed over npm.
+
+```bash
+npm i --save-dev @cssinsurance/angular-lingua-gui
+```
+
+then you can create a run script in your package.json. the first parameter is where your location file is stored. After that, you can specify the language keys.
+
+```json
+{
+  "scripts": {
+    "angular-lingua-gui": "angular-lingua-gui src/locales/locales.ts deu ita fra"
+  }
+}
+```
