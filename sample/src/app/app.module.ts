@@ -2,7 +2,7 @@ import {MatButtonModule, MatIconModule, MatSidenavModule, MatToolbarModule} from
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {TranslationModule} from '@cssinsurance/angular-lingua';
+import {TranslationModule} from 'angular-lingua';
 
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';

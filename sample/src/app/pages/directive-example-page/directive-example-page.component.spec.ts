@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import {MatIconModule} from '@angular/material';
-import {TranslationModule} from '@cssinsurance/angular-lingua';
+import {TranslationModule} from 'angular-lingua';
 
 import { DirectiveExamplePageComponent } from './directive-example-page.component';
 

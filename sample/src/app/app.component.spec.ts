@@ -3,7 +3,7 @@ import {MatIconModule, MatSidenavModule, MatToolbarModule} from '@angular/materi
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterTestingModule} from '@angular/router/testing';
-import {TranslationModule} from '@cssinsurance/angular-lingua';
+import {TranslationModule} from 'angular-lingua';
 import {AppComponent} from './app.component';
 
 describe('AppComponent', () => {

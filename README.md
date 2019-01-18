@@ -9,13 +9,13 @@ If you want the Compile-time safety to work you have to build it with aot enable
 
 First you need to install the npm module:
 ```bash
-npm i @cssinsurance/angular-lingua
+npm i angular-lingua
 ```
 To use angular-lingua in your project you have to import the module in your AppModule with a default language. This language can be changed at runtime.
 
 ```typescript
 import { NgModule } from '@angular/core';
-import { TranslationModule } from '@cssinsurance/angular-lingua';
+import { TranslationModule } from 'angular-lingua';
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -169,7 +169,7 @@ With this web UI you have a simple way to search update add and delete your tran
 It can be installed over npm.
 
 ```bash
-npm i --save-dev @cssinsurance/angular-lingua-gui
+npm i --save-dev angular-lingua-gui
 ```
 
 then you can create a run script in your package.json. the first parameter is where your location file is stored. After that, you can specify the language keys.
