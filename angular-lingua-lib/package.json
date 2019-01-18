@@ -7,8 +7,9 @@
     "url": "http://www.css.ch",
     "email": "coma@css.ch"
   },
+  "license": "agpl-3.0",
   "maintainers": [],
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": false,
   "main": "src/index.ts",
   "scripts": {},
