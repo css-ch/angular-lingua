@@ -8,7 +8,7 @@
     "email": "coma@css.ch"
   },
   "maintainers": [],
-  "version": "0.0.5",
+  "version": "0.1.0",
   "private": false,
   "main": "src/index.ts",
   "scripts": {},
