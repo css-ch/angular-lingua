@@ -21,15 +21,16 @@
     "ng": "ng",
     "build": "ng build",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "npm:publish:patch": "npm version patch && npm run build && cd dist && npm publish"
   },
   "license": "agpl-3.0",
   "maintainers": [],
-  "version": "0.1.2",
+  "version": "0.1.4",
   "private": false,
   "peerDependencies": {
-    "@angular/common": ">=6.0.0",
-    "@angular/core": ">=6.0.0"
+    "@angular/common": ">=2.0.0",
+    "@angular/core": ">=2.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.12.0",
