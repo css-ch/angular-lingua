@@ -1,37 +1,37 @@
 {
   "name": "angular-lingua",
+  "version": "0.1.4",
+  "private": false,
   "description": "Make @angular i18n translation simple and easy again",
   "keywords": [
     "@angular",
     "angular",
-    "translation",
+    "aot",
+    "component",
     "i18n",
+    "jit",
     "pipe",
     "service",
-    "component",
-    "aot",
-    "jit"
+    "translation"
   ],
-  "author": {
-    "name": "CSS Versicherung",
-    "url": "http://www.css.ch",
-    "email": "coma@css.ch"
-  },
-  "scripts": {
-    "ng": "ng",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "npm:publish:patch": "npm version patch && npm run build && cd dist && npm publish"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/css-ch/angular-lingua.git"
   },
   "license": "agpl-3.0",
-  "maintainers": [],
-  "version": "0.1.4",
-  "private": false,
-  "peerDependencies": {
-    "@angular/common": ">=2.0.0",
-    "@angular/core": ">=2.0.0"
+  "author": {
+    "name": "CSS Versicherung",
+    "email": "coma@css.ch",
+    "url": "http://www.css.ch"
   },
+  "scripts": {
+    "build": "ng build",
+    "lint": "ng lint",
+    "ng": "ng",
+    "test": "ng test",
+    "npm:publish:patch": "npm version patch && npm run build && cd dist && npm publish"
+  },
+  "dependencies": {},
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.12.0",
     "@angular-devkit/build-ng-packagr": "~0.12.0",
@@ -41,15 +41,26 @@
     "@angular/compiler-cli": "~7.2.0",
     "@angular/core": "^7.2.1",
     "@angular/platform-browser": "^7.2.1",
+    "@angular/platform-browser-dynamic": "^7.2.1",
+    "@types/jasmine": "^3.3.7",
+    "@types/jasminewd2": "^2.0.6",
+    "@types/node": "^10.12.18",
+    "codelyzer": "^4.5.0",
+    "karma": "^3.1.4",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-coverage-istanbul-reporter": "^2.0.4",
+    "karma-jasmine": "^2.0.1",
+    "karma-jasmine-html-reporter": "^1.4.0",
     "ng-packagr": "^4.2.0",
     "tsickle": ">=0.34.0",
     "tslib": "^1.9.0",
     "tslint": "~5.11.0",
-    "typescript": "~3.2.2"
+    "typescript": "~3.2.2",
+    "zone.js": "^0.8.28"
   },
-  "dependencies": {},
-  "repository": {
-    "url": "https://github.com/css-ch/angular-lingua.git",
-    "type": "git"
-  }
+  "peerDependencies": {
+    "@angular/common": ">=2.0.0",
+    "@angular/core": ">=2.0.0"
+  },
+  "maintainers": []
 }
