@@ -1,24 +1,52 @@
 {
   "name": "angular-lingua",
   "description": "Make @angular i18n translation simple and easy again",
-  "keywords": ["@angular", "angular", "translation", "i18n", "pipe", "service", "component", "aot", "jit"],
+  "keywords": [
+    "@angular",
+    "angular",
+    "translation",
+    "i18n",
+    "pipe",
+    "service",
+    "component",
+    "aot",
+    "jit"
+  ],
   "author": {
     "name": "CSS Versicherung",
     "url": "http://www.css.ch",
     "email": "coma@css.ch"
   },
+  "scripts": {
+    "ng": "ng",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint"
+  },
   "license": "agpl-3.0",
   "maintainers": [],
   "version": "0.1.2",
   "private": false,
-  "main": "src/index.ts",
-  "scripts": {},
   "peerDependencies": {
-    "@angular/common": ">=2.0.0",
-    "@angular/core": ">=2.0.0"
+    "@angular/common": ">=6.0.0",
+    "@angular/core": ">=6.0.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.12.0",
+    "@angular-devkit/build-ng-packagr": "~0.12.0",
+    "@angular/cli": "~7.2.2",
+    "@angular/common": "^7.2.1",
+    "@angular/compiler": "^7.2.1",
+    "@angular/compiler-cli": "~7.2.0",
+    "@angular/core": "^7.2.1",
+    "@angular/platform-browser": "^7.2.1",
+    "ng-packagr": "^4.2.0",
+    "tsickle": ">=0.34.0",
+    "tslib": "^1.9.0",
+    "tslint": "~5.11.0",
+    "typescript": "~3.2.2"
   },
   "dependencies": {},
-  "devDependencies": {},
   "repository": {
     "url": "https://github.com/css-ch/angular-lingua.git",
     "type": "git"
