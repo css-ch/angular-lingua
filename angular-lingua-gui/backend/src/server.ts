@@ -20,7 +20,7 @@ export default async (
 	{USE_DOUBLE_QUOTES, IS_PRODUCTION, LOCALES_FILE_PATH, LANGUAGES}: ApplicationOption,
 	onServerStarted: (url: string) => void,
 ): Promise<void> => {
-	const PUBLIC_PATH = path.join(__dirname, '../public');
+	const PUBLIC_PATH = path.join(__dirname, './public');
 	const PORT = process.env.PORT || await getPort({port: 9090});
 
 
@@ -73,7 +73,7 @@ export default async (
 
 	server.listen(PORT, () => {
 		const URL = `http://localhost:${PORT}`;
-		console.log(`starting server on PORT:${PORT} in PRODUCTION:${IS_PRODUCTION}`);
+		console.log(`starting server on PORT:${PORT}`);
 		console.log(`it can be accessed with: ${URL}`);
 		onServerStarted(URL);
 	});

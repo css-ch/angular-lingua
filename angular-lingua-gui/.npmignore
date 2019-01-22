@@ -159,6 +159,8 @@ atlassian-ide-plugin.xml
 # Cursive Clojure plugin
 .idea/replstate.xml
 
+.idea/
+
 # Crashlytics plugin (for Android Studio and IntelliJ)
 com_crashlytics_export_strings.xml
 crashlytics.properties
@@ -212,3 +214,6 @@ Temporary Items
 # .nfs files are created when an open file is removed but is still being accessed
 .nfs*
 
+frontend/
+backend/
+test-data/
