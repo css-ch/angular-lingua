@@ -1,22 +1,24 @@
-import {BrowserModule} from '@angular/platform-browser';
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import {HttpClientModule} from '@angular/common/http';
 import {NgModule} from '@angular/core';
-
-import {AppComponent} from './app.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {TranslationsEditorComponent} from './pages/translations-editor/translations-editor.component';
-import {TranslationService} from './services/translation.service';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {
-  MatButtonModule, MatCardModule,
+  MatButtonModule,
+  MatCardModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
   MatTableModule,
   MatToolbarModule
 } from '@angular/material';
-import {HttpClientModule} from '@angular/common/http';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+import {AppComponent} from './app.component';
 import {TranslationEditFormComponent} from './components/translation-edit-form/translation-edit-form.component';
 import {TranslationNewFormComponent} from './components/translation-new-form/translation-new-form.component';
+import {TranslationsEditorComponent} from './pages/translations-editor/translations-editor.component';
+import {TranslationService} from './services/translation.service';
 import {KeyTakenValidatorDirective} from './validators/key-taken-validator.directive';
 
 @NgModule({
@@ -39,7 +41,8 @@ import {KeyTakenValidatorDirective} from './validators/key-taken-validator.direc
     MatInputModule,
     MatCardModule,
     MatButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ScrollingModule
   ],
   providers: [TranslationService],
   bootstrap: [AppComponent]

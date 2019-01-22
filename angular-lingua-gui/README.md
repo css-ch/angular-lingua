@@ -18,5 +18,5 @@ then you can create a run script in your package.json. the first parameter is wh
 }
 ```
 
-![Screenshot Angular Lingua GUI 1](../documents/screenshot-angular-lingua-gui-1.png "Screenshot Angular Lingua GUI 1")
-![Screenshot Angular Lingua GUI 2](../documents/screenshot-angular-lingua-gui-2.png "Screenshot Angular Lingua GUI 2")
+![Screenshot Angular Lingua GUI 1](https://raw.githubusercontent.com/css-ch/angular-lingua/master/documents/screenshot-angular-lingua-gui-1.png "Screenshot Angular Lingua GUI 1")
+![Screenshot Angular Lingua GUI 2](https://raw.githubusercontent.com/css-ch/angular-lingua/master/documents/screenshot-angular-lingua-gui-2.png "Screenshot Angular Lingua GUI 2")

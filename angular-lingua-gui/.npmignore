@@ -217,3 +217,5 @@ Temporary Items
 frontend/
 backend/
 test-data/
+
+angular.json

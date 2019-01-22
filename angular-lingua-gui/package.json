@@ -1,8 +1,14 @@
 {
   "name": "angular-lingua-gui",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.1.1",
   "description": "The web based management interface for your angular-lingua translations",
+  "keywords": [
+    "@angular",
+    "angular",
+    "angular-lingua",
+    "GUI",
+    "i18n"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/css-ch/angular-lingua.git"
@@ -17,10 +23,10 @@
     "build-backend": "tsc -p ./backend",
     "build-frontend": "ng build --prod",
     "ng": "ng",
-    "npm:publish:patch": "npm version patch && npm pack",
+    "npm:publish:patch": "npm version patch && npm publish",
     "prepare": "npm run build",
     "start": "npm run build-frontend && npm run start-backend",
-    "start-backend": "ts-node --project ./backend/tsconfig.json ./backend/src/index.ts --browser=false ./test-data/locales.ts deu ita fra ",
+    "start-backend": "ts-node --project ./backend/tsconfig.json ./backend/src/index.ts --browser=false ./test-data/locales.ts deu ita fra",
     "start-frontend": "ng serve",
     "ts-node": "ts-node",
     "tsc": "tsc",
