@@ -1,9 +1,9 @@
 import {ChangeDetectorRef, OnDestroy, Pipe, PipeTransform} from '@angular/core';
+import {Subscription} from 'rxjs';
 import {skip} from 'rxjs/operators';
 import {isEqual} from '../helper';
 import {TranslationService} from '../service/translation.service';
 import {Translation} from '../translation.type';
-import {Subscription} from 'rxjs';
 
 @Pipe({
   name: 'i18n',
@@ -21,7 +21,7 @@ export class TranslationPipe implements PipeTransform, OnDestroy {
   private value: string;
   private oldTranslation: Translation;
   private oldOpts: { [k: string]: string } = {};
-  private oldLang: string;
+  private oldLang: string = null;
 
   constructor(
     private translationService: TranslationService,

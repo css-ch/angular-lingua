@@ -45,4 +45,27 @@ describe('TranslationService', () => {
 
     expect(containsBrackets).toBeFalsy();
   });
+
+  it('#changeLanguage should change default language', () => {
+    const LOCALES = {
+      TITLE: {
+        [defaultLang]: 'HELLO',
+        spa: 'HOLLA'
+      }
+    };
+
+    expect(service.get(LOCALES.TITLE)).toBe('HELLO');
+    service.changeLanguage('spa');
+    expect(service.get(LOCALES.TITLE)).toBe('HOLLA');
+  });
+
+  it('#changeLanguage should emit language event', () => {
+    const newLang = 'ita';
+
+    const $languageSpy = spyOn(service.$language, 'next');
+
+    service.changeLanguage(newLang);
+
+    expect($languageSpy).toHaveBeenCalled();
+  });
 });

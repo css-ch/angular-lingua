@@ -5,6 +5,7 @@ import {TranslationPipe} from './translation.pipe';
 describe('TranslationPipe', () => {
   let translationPipe: TranslationPipe;
   let changeDetectorRef: ChangeDetectorRef;
+  let translationService: TranslationService;
   const defaultLang = 'deu';
 
   beforeEach(() => {
@@ -20,8 +21,8 @@ describe('TranslationPipe', () => {
       reattach(): void {
       }
     };
-
-    translationPipe = new TranslationPipe(new TranslationService(defaultLang), changeDetectorRef);
+    translationService = new TranslationService(defaultLang);
+    translationPipe = new TranslationPipe(translationService, changeDetectorRef);
   });
 
   it('#transform Should just return the translation', () => {
