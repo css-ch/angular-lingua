@@ -1,16 +1,16 @@
+import {NgModule} from '@angular/core';
 import {MatButtonModule, MatIconModule, MatSidenavModule, MatToolbarModule} from '@angular/material';
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterModule, Routes} from '@angular/router';
-import {TranslationModule} from 'angular-lingua';
+import {LANGUAGE_TOKEN, TranslationModule} from 'angular-lingua';
 
 import {AppComponent} from './app.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { HomePageComponent } from './pages/home-page/home-page.component';
-import { PipeExamplePageComponent } from './pages/pipe-example-page/pipe-example-page.component';
-import { DirectiveExamplePageComponent } from './pages/directive-example-page/directive-example-page.component';
-import { ServiceExamplePageComponent } from './pages/service-example-page/service-example-page.component';
-import { ComponentExamplePageComponent } from './pages/component-example-page/component-example-page.component';
+import {ComponentExamplePageComponent} from './pages/component-example-page/component-example-page.component';
+import {DirectiveExamplePageComponent} from './pages/directive-example-page/directive-example-page.component';
+import {HomePageComponent} from './pages/home-page/home-page.component';
+import {PipeExamplePageComponent} from './pages/pipe-example-page/pipe-example-page.component';
+import {ServiceExamplePageComponent} from './pages/service-example-page/service-example-page.component';
 
 const routes: Routes = [
   {
@@ -56,10 +56,15 @@ const routes: Routes = [
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    TranslationModule.forRoot('deu'),
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    TranslationModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: LANGUAGE_TOKEN,
+      useValue: 'ita'
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

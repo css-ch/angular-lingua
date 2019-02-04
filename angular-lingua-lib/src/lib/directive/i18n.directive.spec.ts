@@ -1,6 +1,7 @@
 import {Component, DebugElement} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
+import {LANGUAGE_TOKEN} from '../language.token';
 import {TranslationModule} from '../translation.module';
 import {Translation} from '../translation.type';
 import {I18nDirective} from './i18n.directive';
@@ -31,7 +32,13 @@ describe('I18nDirective', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [TestI18nComponent],
-        imports: [TranslationModule.forRoot(defaultLang)]
+        imports: [TranslationModule.forRoot()],
+        providers: [
+          {
+            provide: LANGUAGE_TOKEN,
+            useValue: defaultLang
+          }
+        ]
       });
 
       fixture = TestBed.createComponent(TestI18nComponent);
@@ -62,7 +69,13 @@ describe('I18nDirective', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         declarations: [TestI18nWithParamsComponent],
-        imports: [TranslationModule.forRoot(defaultLang)]
+        imports: [TranslationModule.forRoot()],
+        providers: [
+          {
+            provide: LANGUAGE_TOKEN,
+            useValue: defaultLang
+          }
+        ]
       });
 
       fixture = TestBed.createComponent(TestI18nWithParamsComponent);
