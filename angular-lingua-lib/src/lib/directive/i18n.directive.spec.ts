@@ -1,7 +1,7 @@
 import {Component, DebugElement} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
-import {LANGUAGE_TOKEN} from '../language.token';
+import {LANGUAGE_TOKEN_INTERNAL} from '../language.token';
 import {TranslationModule} from '../translation.module';
 import {Translation} from '../translation.type';
 import {I18nDirective} from './i18n.directive';
@@ -35,7 +35,7 @@ describe('I18nDirective', () => {
         imports: [TranslationModule.forRoot()],
         providers: [
           {
-            provide: LANGUAGE_TOKEN,
+            provide: LANGUAGE_TOKEN_INTERNAL,
             useValue: defaultLang
           }
         ]
@@ -72,7 +72,7 @@ describe('I18nDirective', () => {
         imports: [TranslationModule.forRoot()],
         providers: [
           {
-            provide: LANGUAGE_TOKEN,
+            provide: LANGUAGE_TOKEN_INTERNAL,
             useValue: defaultLang
           }
         ]

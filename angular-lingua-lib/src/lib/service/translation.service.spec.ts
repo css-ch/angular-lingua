@@ -46,6 +46,20 @@ describe('TranslationService', () => {
     expect(containsBrackets).toBeFalsy();
   });
 
+  it('#get external has more prio than internal', () => {
+    const internalLang = 'deu', externalLang = 'eng';
+    service = new TranslationService(internalLang, externalLang);
+
+    const LOCALES = {
+      TITLE: {
+        [internalLang]: 'HALLO',
+        [externalLang]: 'HELLO'
+      }
+    };
+
+    expect(service.get(LOCALES.TITLE)).toBe('HELLO');
+  });
+
   it('#changeLanguage should change default language', () => {
     const LOCALES = {
       TITLE: {

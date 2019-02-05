@@ -4,6 +4,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {TranslateParamsDirective} from './component/translate-params.directive';
 import {TranslateComponent} from './component/translate.component';
 import {I18nDirective} from './directive/i18n.directive';
+import {LANGUAGE_TOKEN_INTERNAL} from './language.token';
 import {TranslationPipe} from './pipe/translation.pipe';
 import {TranslationService} from './service/translation.service';
 
@@ -13,11 +14,15 @@ import {TranslationService} from './service/translation.service';
   exports: [TranslationPipe, TranslateComponent, TranslateParamsDirective, I18nDirective]
 })
 export class TranslationModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(defaultLang?: string): ModuleWithProviders {
     return {
       ngModule: TranslationModule,
       providers: [
         TranslationService,
+        {
+          provide: LANGUAGE_TOKEN_INTERNAL,
+          useValue: defaultLang
+        }
       ]
     };
   }

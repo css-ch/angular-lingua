@@ -1,6 +1,6 @@
-import {Inject, Injectable} from '@angular/core';
+import {Inject, Injectable, Optional} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
-import {LANGUAGE_TOKEN} from '../language.token';
+import {LANGUAGE_TOKEN, LANGUAGE_TOKEN_INTERNAL} from '../language.token';
 import {Translation} from '../translation.type';
 
 @Injectable({
@@ -10,8 +10,15 @@ export class TranslationService {
   public $language: BehaviorSubject<string>;
 
   constructor(
-    @Inject(LANGUAGE_TOKEN) private language) {
+    @Inject(LANGUAGE_TOKEN_INTERNAL) languageInternal: string,
+    @Optional() @Inject(LANGUAGE_TOKEN) languageExternal?: string
+  ) {
+    const language = (languageExternal) ? languageExternal : languageInternal;
     this.$language = new BehaviorSubject(language);
+  }
+
+  public get language() {
+    return this.$language.getValue();
   }
 
   get(entry: Translation, opts?: { [k: string]: string }, lang?: string): string {
@@ -68,7 +75,6 @@ export class TranslationService {
   }
 
   public changeLanguage(newLang: string) {
-    this.language = newLang;
     this.$language.next(newLang);
   }
 }

@@ -3,7 +3,7 @@ import {MatButtonModule, MatIconModule, MatSidenavModule, MatToolbarModule} from
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterModule, Routes} from '@angular/router';
-import {LANGUAGE_TOKEN, TranslationModule} from 'angular-lingua';
+import {TranslationModule} from 'angular-lingua';
 
 import {AppComponent} from './app.component';
 import {ComponentExamplePageComponent} from './pages/component-example-page/component-example-page.component';
@@ -57,14 +57,9 @@ const routes: Routes = [
     MatIconModule,
     MatButtonModule,
     RouterModule.forRoot(routes),
-    TranslationModule.forRoot(),
+    TranslationModule.forRoot('deu'),
   ],
-  providers: [
-    {
-      provide: LANGUAGE_TOKEN,
-      useValue: 'ita'
-    }
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

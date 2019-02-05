@@ -9,4 +9,4 @@ export * from './lib/pipe/translation.pipe';
 export * from './lib/component/translate.component';
 export * from './lib/component/translate-params.directive';
 export * from './lib/directive/i18n.directive';
-export * from './lib/language.token';
+export {LANGUAGE_TOKEN} from './lib/language.token';

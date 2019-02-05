@@ -11,7 +11,7 @@ First you need to install the npm module:
 ```bash
 npm i angular-lingua
 ```
-To use angular-lingua in your project you have to import the module in your AppModule and provide a default language. This language can be changed at runtime.
+To use angular-lingua in your project you have to import the module in your AppModule and provide a default language. This can be done via a provider or through a forRoot parameter. The language can be changed at runtime.
 
 ```typescript
 import { NgModule } from '@angular/core';
