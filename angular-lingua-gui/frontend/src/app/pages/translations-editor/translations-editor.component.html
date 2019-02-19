@@ -18,7 +18,7 @@
     (cancel)="createNewMode = false"
   ></app-translation-new-form>
 
-  <cdk-virtual-scroll-viewport autosize  class="virtual-scroll-viewport">
+  <cdk-virtual-scroll-viewport [itemSize]="82 * languages$.value.length" class="virtual-scroll-viewport">
     <app-translation-edit-form
       *cdkVirtualFor="let translation of filteredTranslations$ | async"
       [translation]="translation"

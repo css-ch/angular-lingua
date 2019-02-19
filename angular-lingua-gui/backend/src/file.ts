@@ -27,16 +27,22 @@ export async function saveTranslationToFile(
 
 	for (const translationKey in translations) {
 		if (translations.hasOwnProperty(translationKey)) {
-			outputString += `  ${qot}${translationKey}${qot}: {\n`;
+			if (/\s/.test(translationKey)) {
+				// If the key contains white spaces put quotes around it
+				outputString += `  ${qot}${translationKey}${qot}: {\n`;
+			} else {
+				outputString += `  ${translationKey}: {\n`;
+			}
 
 			let hasKeys = false;
-			for (const langKey in translations[translationKey]) {
+			const langKeys = Object.keys(translations[translationKey]).sort();
+			for (const langKey of langKeys) {
 				if (translations[translationKey].hasOwnProperty(langKey)) {
 					hasKeys = true;
 					const translationValue = JSON.stringify(translations[translationKey][langKey])
 						.slice(1, -1)
 						.replace(/'/gm, `\\'`);
-					outputString += `    ${qot}${langKey}${qot}: ${qot}${translationValue}${qot},\n`;
+					outputString += `    ${langKey}: ${qot}${translationValue}${qot},\n`;
 				}
 			}
 

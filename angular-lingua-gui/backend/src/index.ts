@@ -1,8 +1,7 @@
 #!/usr/bin/env  node
-import path from 'path';
-
 import program from 'commander';
 import opn from 'opn';
+import path from 'path';
 
 import server from './server';
 import {ApplicationOption} from './types/application-option';
@@ -11,7 +10,7 @@ import {ApplicationOption} from './types/application-option';
 program
 	.command('translation-gui <locales> [languages...]', '<locales> The file with the translations. <languages...> the languages to show')
 	.option('-d, --doubleQuote [useDoubleQuotes]', 'Use double quotes', false)
-	.option('-b, --browser [open]', 'if it should open browser',  true)
+	.option('-b, --browser [open]', 'if it should open browser', true)
 	.version('0.0.1')
 	.parse(process.argv);
 
