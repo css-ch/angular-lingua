@@ -1,3 +1,4 @@
+import {ScrollingModule as ExperimentalScrollingModule} from '@angular/cdk-experimental/scrolling';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {HttpClientModule} from '@angular/common/http';
 import {NgModule} from '@angular/core';
@@ -42,7 +43,8 @@ import {KeyTakenValidatorDirective} from './validators/key-taken-validator.direc
     MatCardModule,
     MatButtonModule,
     ReactiveFormsModule,
-    ScrollingModule
+    ScrollingModule,
+    ExperimentalScrollingModule
   ],
   providers: [TranslationService],
   bootstrap: [AppComponent]
