@@ -1,7 +1,6 @@
 #!/usr/bin/env  node
 import program from 'commander';
-// @ts-ignore
-import opn from 'opn';
+import open from 'open';
 import path from 'path';
 
 import server from './server';
@@ -34,6 +33,6 @@ const applicationOption: ApplicationOption = {
 
 server(applicationOption, (url) => {
 	if (OPEN_BROWSER) {
-		opn(url);
+		open(url);
 	}
 });

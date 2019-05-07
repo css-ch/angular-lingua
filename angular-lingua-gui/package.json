@@ -37,7 +37,7 @@
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "get-port": "^4.2.0",
-    "opn": "^5.4.0",
+    "open": "^6.2.0",
     "require-from-string": "^2.0.2",
     "typescript": "~3.2.4",
     "ws": "^6.2.1"
@@ -66,7 +66,6 @@
     "@types/jasmine": "^2.8.16",
     "@types/jasminewd2": "^2.0.6",
     "@types/node": "^11.13.10",
-    "@types/opn": "^5.4.0",
     "@types/require-from-string": "^1.2.0",
     "@types/ws": "^6.0.1",
     "codelyzer": "~4.5.0",
@@ -81,6 +80,6 @@
     "tslib": "^1.9.3",
     "tslint": "~5.16.0",
     "webpack-dev-server": "^3.3.1",
-    "zone.js": "~0.9.1"
+    "zone.js": "~0.8.26"
   }
 }
