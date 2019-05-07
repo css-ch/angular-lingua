@@ -1,5 +1,6 @@
 #!/usr/bin/env  node
 import program from 'commander';
+// @ts-ignore
 import opn from 'opn';
 import path from 'path';
 
