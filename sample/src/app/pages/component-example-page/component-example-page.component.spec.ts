@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import {MatIconModule} from '@angular/material';
+import { MatIconModule } from '@angular/material/icon';
 import {TranslationModule} from 'angular-lingua';
 
 import { ComponentExamplePageComponent } from './component-example-page.component';

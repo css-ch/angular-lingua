@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
-import {ShowOnDirtyErrorStateMatcher} from '@angular/material';
+import { ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 import {BehaviorSubject, Subject} from 'rxjs';
 import {debounceTime} from 'rxjs/operators';
 import {Translation} from '../../types/translation.type';
@@ -12,7 +12,7 @@ import {Translation} from '../../types/translation.type';
 })
 export class TranslationEditFormComponent implements OnInit, OnDestroy {
 
-  @ViewChild('form') public form: NgForm;
+  @ViewChild('form', { static: true }) public form: NgForm;
 
   @Input() languages$: BehaviorSubject<string[]>;
   @Input() translations$: BehaviorSubject<Translation[]>;

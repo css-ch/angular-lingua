@@ -1,5 +1,7 @@
 import {TestBed, async} from '@angular/core/testing';
-import {MatIconModule, MatSidenavModule, MatToolbarModule} from '@angular/material';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterTestingModule} from '@angular/router/testing';
