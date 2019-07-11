@@ -1,0 +1,27 @@
+{
+  "name": "angular-lingua-gui",
+  "version": "0.1.6",
+  "description": "The web based management interface for your angular-lingua translations",
+  "keywords": [
+    "@angular",
+    "angular",
+    "angular-lingua",
+    "GUI",
+    "i18n"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/css-ch/angular-lingua.git"
+  },
+  "license": "AGPL",
+  "scripts": {
+    "postinstall": "npm install angular-lingua-gui && npm install angular-lingua-lib"
+  }
+  "bin": {
+    "angular-lingua-gui": "angular-lingua-gui/dist/index.js",
+  },
+  "maintainers": [
+    "Donato Wolfisberg <donato.wolfisberg@css.ch>",
+    "Christian Scharr <christian.scharr@css.ch>"
+  ]
+}
