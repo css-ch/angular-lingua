@@ -32,6 +32,21 @@ describe('TranslationService', () => {
     expect(service.get({esp: smTranslation}, {}, 'esp')).toBe(smTranslation);
   });
 
+  it('#get Should replace both variables', () => {
+    const smTranslation = 'The name is {{FIRST_NAME}} {{LAST_NAME}}';
+    expect(service.get({[defaultLang]: smTranslation}, {
+      FIRST_NAME: 'James',
+      LAST_NAME: 'Bond'
+    }, )).toBe('The name is James Bond');
+  });
+
+  it('#get Should replace variable at the beginning with single space', () => {
+    const smTranslation = ' {{SOME_VAR}}';
+    expect(service.get({[defaultLang]: smTranslation}, {
+      SOME_VAR: 'Hello',
+    }, )).toBe(' Hello');
+  });
+
   it('#get Should escape variable', () => {
     const smTranslation = 'Hello \\{{World}}';
     expect(service.get({[defaultLang]: smTranslation})).toBe('Hello {{World}}');

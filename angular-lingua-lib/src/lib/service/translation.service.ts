@@ -45,7 +45,7 @@ export class TranslationService {
   public getTranslationList(entry: Translation, lang?: string): { type: 'string' | 'key', value: string }[] {
     lang = (lang) ? lang : this.language;
     const result = [];
-    let m;
+    let m: RegExpExecArray;
     let str = entry[lang];
 
     if (str === undefined) {
@@ -56,9 +56,17 @@ export class TranslationService {
 
     while ((m = /(^|[^\\]){{\w+}}/gm.exec(str)) !== null) {
       let optsKey;
-      if (m.index === 0) {
+      if (m.index === 0 && m[0][0] !== '{') {
+        // If the key has a single char(space) in front "a{{Var_Name}}"
+        // This is because of how the regex matches the char before the var.
+        // It does this to see if there is an escape character.
+        result.push({type: 'string', value: m[0][0]});
+        optsKey = m[0].slice(3, -2);
+      } else if (m.index === 0) {
+        // If the key is at the beginning "{{Var_Name}} Hello"
         optsKey = m[0].slice(2, -2);
       } else {
+        // If the key has a string in front "Hello my name is {{Var_Name}}"
         optsKey = m[0].slice(3, -2);
       }
 
@@ -71,6 +79,7 @@ export class TranslationService {
     }
 
     result.push({type: 'string', value: str.replace(/\\{{\w+}}/gm, removeEscapeFunction)});
+
     return result;
   }
 
