@@ -14,7 +14,7 @@ import {TranslationService} from './service/translation.service';
   exports: [TranslationPipe, TranslateComponent, TranslateParamsDirective, I18nDirective]
 })
 export class TranslationModule {
-  static forRoot(defaultLang?: string): ModuleWithProviders {
+  static forRoot(defaultLang?: string): ModuleWithProviders<TranslationModule> {
     return {
       ngModule: TranslationModule,
       providers: [
