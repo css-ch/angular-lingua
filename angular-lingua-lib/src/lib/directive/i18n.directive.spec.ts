@@ -4,7 +4,6 @@ import {By} from '@angular/platform-browser';
 import {LANGUAGE_TOKEN_INTERNAL} from '../language.token';
 import {TranslationModule} from '../translation.module';
 import {Translation} from '../translation.type';
-import {I18nDirective} from './i18n.directive';
 
 @Component({
   template: `<p [i18n]="locale"></p>`
