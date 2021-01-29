@@ -13,17 +13,14 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [12.x]
 
     steps:
       - uses: actions/checkout@v1
 
-      - name: Node $
+      - name: Node 12.x
         uses: actions/setup-node@v1
         with:
-          node-version: $
+          node-version: 12.x
 
       - run: cd angular-lingua-lib && npm ci
       - run: cd angular-lingua-lib && npm run build
