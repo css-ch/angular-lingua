@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { MatIconModule } from '@angular/material/icon';
 import {TranslationModule} from 'angular-lingua';
 
@@ -8,7 +8,7 @@ describe('PipeExamplePageComponent', () => {
   let component: PipeExamplePageComponent;
   let fixture: ComponentFixture<PipeExamplePageComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ PipeExamplePageComponent ],
       imports: [TranslationModule.forRoot('deu'), MatIconModule]
