@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { MatIconModule } from '@angular/material/icon';
 import {TranslationModule} from 'angular-lingua';
 
@@ -8,7 +8,7 @@ describe('DirectiveExamplePageComponent', () => {
   let component: DirectiveExamplePageComponent;
   let fixture: ComponentFixture<DirectiveExamplePageComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ DirectiveExamplePageComponent ],
       imports: [TranslationModule.forRoot('deu'), MatIconModule]

@@ -1,4 +1,4 @@
-import {TestBed, async} from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -9,7 +9,7 @@ import {TranslationModule} from 'angular-lingua';
 import {AppComponent} from './app.component';
 
 describe('AppComponent', () => {
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent
