@@ -53,7 +53,7 @@
     "karma-coverage-istanbul-reporter": "2.1.1",
     "karma-jasmine": "2.0.1",
     "karma-jasmine-html-reporter": "1.6.0",
-    "ng-packagr": "11.0.0",
+    "ng-packagr": "11.2.4",
     "puppeteer": "5.5.0",
     "rxjs": "6.6.7",
     "tslib": "2.2.0",
