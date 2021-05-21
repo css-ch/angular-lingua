@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {LOCALES} from '../../../locales/locales';
 
 @Component({
@@ -6,12 +6,6 @@ import {LOCALES} from '../../../locales/locales';
   templateUrl: './component-example-page.component.html',
   styleUrls: ['./component-example-page.component.scss']
 })
-export class ComponentExamplePageComponent implements OnInit {
+export class ComponentExamplePageComponent {
   readonly LOCALES = LOCALES;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
 }
