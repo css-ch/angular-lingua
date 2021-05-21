@@ -19,11 +19,13 @@
     "url": "https://github.com/css-ch/angular-lingua.git"
   },
   "scripts": {
-    "build": "ng build",
+    "build:lib": "ng build --project angular-lingua --configuration production",
+    "build:sample": "ng build --project sample --configuration production",
     "lint": "ng lint",
     "ng": "ng",
     "test": "ng test",
     "test:ci": "ng test --watch=false --browsers=ChromeHeadlessCustom",
+    "e2e": "ng e2e --project sample-e2e",
     "npm:publish:patch": "npm version patch && npm run build && cd dist && npm publish"
   },
   "license": "agpl-3.0",

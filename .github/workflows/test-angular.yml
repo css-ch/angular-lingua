@@ -17,11 +17,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Node 12.x
+      - name: Node 14.x
         uses: actions/setup-node@v2
         with:
-          node-version: 12.x
+          node-version: 14.x
 
-      - run: cd angular-lingua-lib && npm ci
-      - run: cd angular-lingua-lib && npm run build
-      - run: cd angular-lingua-lib && npm run test:ci
+      - run: npm ci
+      - name: Build Library
+        run: npm run build:lib
+      - name: Build Sample
+        run: npm run build:sample
+      - run: npm run test:ci
+      - run: npm run e2e
