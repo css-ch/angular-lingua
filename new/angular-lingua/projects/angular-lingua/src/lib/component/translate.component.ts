@@ -10,6 +10,7 @@ import {
 import {TranslationService} from '../service/translation.service';
 import {Translation} from '../translation.type';
 import {TranslateParamsDirective} from './translate-params.directive';
+import {TranslationList} from '../translation-list.type'
 import {Subscription} from 'rxjs';
 
 @Component({
@@ -17,17 +18,18 @@ import {Subscription} from 'rxjs';
   templateUrl: './translate.component.html',
   styles: []
 })
+
 export class TranslateComponent implements OnChanges, AfterContentInit, OnDestroy {
 
-  @ContentChildren(TranslateParamsDirective) optChildrenQueryList: QueryList<TranslateParamsDirective> = null;
+  @ContentChildren(TranslateParamsDirective) optChildrenQueryList: QueryList<TranslateParamsDirective> | null = null;
 
-  @Input() key: Translation = null;
+  @Input() key: Translation | undefined;
 
-  @Input() lang: string;
+  @Input() lang: string | undefined;
 
-  public optionMap: { [k: string]: TemplateRef<any> };
+  public optionMap: { [k: string]: TemplateRef<any> } = {};
 
-  public translationList: { type: 'string' | 'key', value: string }[];
+  public translationList: TranslationList = [];
 
   public language$$: Subscription;
 
@@ -49,12 +51,12 @@ export class TranslateComponent implements OnChanges, AfterContentInit, OnDestro
   }
 
   updateTranslations() {
-    if (this.key === null) {
+    if (!this.key) {
       return;
     }
     this.translationList = this.translationService.getTranslationList(this.key, this.lang);
     this.optionMap = {};
-    this.optChildrenQueryList.forEach((optChild) => {
+    this.optChildrenQueryList?.forEach((optChild) => {
       this.optionMap[optChild.translateParams] = optChild.templateRef;
     });
 
@@ -72,6 +74,4 @@ export class TranslateComponent implements OnChanges, AfterContentInit, OnDestro
       this.language$$.unsubscribe();
     }
   }
-
-
 }
