@@ -1,0 +1,33 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="sidenav.toggle()" class="sidenav-toggle">
+    <mat-icon>menu</mat-icon>
+  </button>
+  Angular Lingua Example page
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" opened class="mat-elevation-z4">
+    <div class="links">
+      <a
+        *ngFor="let link of links"
+        mat-button
+        routerLinkActive="active-link"
+        [routerLink]="link.href"
+      >{{link.text}}</a>
+    </div>
+
+    <div class="change-language">
+      <span>Change Language to: </span>
+      <button
+        *ngFor="let language of languages"
+        mat-button
+        (click)="changeLanguage(language.short)"
+        [class.active-language]="(translationService.$language | async) === language.short"
+      >{{language.text}}</button>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
