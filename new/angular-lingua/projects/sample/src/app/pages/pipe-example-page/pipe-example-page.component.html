@@ -1,0 +1,16 @@
+<h1>I18n Pipe Examples</h1>
+
+<h2>Basic example</h2>
+<p>
+  {{ LOCALES.TITLE | i18n }}
+</p>
+
+<h2>Example with Parameters</h2>
+<p>
+  {{ LOCALES.GREETING_MALE | i18n: {NAME: "Hans Peter"} }}
+</p>
+
+<h2>Example with fixed language</h2>
+<p>
+  {{ LOCALES.TITLE | i18n: {}:'ita' }}
+</p>

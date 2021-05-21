@@ -1,0 +1,59 @@
+mat-sidenav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 200px;
+  background: rgba(255, 255, 255, 0.5);
+
+
+  button, a, span {
+    font-size: 14px;
+    font-weight: 500;
+
+    width: 100%;
+    padding: 10px 5px;
+    text-align: left;
+  }
+
+  .links, .change-language {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .links {
+    align-content: flex-start;
+
+    .active-link {
+      color: #3A55AE;
+    }
+  }
+
+  .change-language {
+    align-content: flex-end;
+
+    .active-language {
+      color: #3A55AE;
+    }
+  }
+}
+
+mat-sidenav-container {
+  position: absolute;
+  top: 60px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+mat-sidenav-content {
+  background-color: #FAFAFA;
+  padding: 20px;
+}
+
+mat-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
