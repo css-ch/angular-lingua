@@ -9,15 +9,15 @@ import {Translation} from '../translation.type';
   template: `<p [i18n]="locale"></p>`
 })
 class TestI18nComponent {
-  locale: Translation;
+  locale!: Translation;
 }
 
 @Component({
   template: `<p [i18n]="locale" [i18nParams]="params"></p>`
 })
 class TestI18nWithParamsComponent {
-  public locale: Translation;
-  public params: { [k: string]: string };
+  public locale!: Translation;
+  public params!: { [k: string]: string };
 }
 
 

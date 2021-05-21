@@ -14,7 +14,7 @@ describe('TranslationService', () => {
   });
 
   it('#get Should throw error translation not found', () => {
-    expect(_ => service.get({})).toThrowError(/.*translation not found.*/);
+    expect(() => service.get({})).toThrowError(/.*translation not found.*/);
   });
 
   it('#get Should replace variables', () => {
@@ -24,7 +24,7 @@ describe('TranslationService', () => {
 
   it('#get Should throw error variable could not be replaced', () => {
     const smTranslation = 'Hello {{World}}';
-    expect(_ => service.get({[defaultLang]: smTranslation}, {})).toThrowError('could not replace variable: World');
+    expect(() => service.get({[defaultLang]: smTranslation}, {})).toThrowError('could not replace variable: World');
   });
 
   it('#get Should use custom lang', () => {

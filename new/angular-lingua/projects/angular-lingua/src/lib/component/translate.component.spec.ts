@@ -19,7 +19,7 @@ class IconComponent {
     <translate [key]="key"></translate>`
 })
 class TestTranslateComponent {
-  key: Translation;
+  key!: Translation;
 }
 
 @Component({
@@ -30,7 +30,7 @@ class TestTranslateComponent {
   `
 })
 class TestTranslateWithParamsComponent {
-  public key: Translation;
+  public key!: Translation;
 }
 
 

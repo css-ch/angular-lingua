@@ -31,7 +31,7 @@ describe('TranslationPipe', () => {
   });
 
   it('#get Should throw error translation not found', () => {
-    expect(_ => translationPipe.transform({})).toThrowError(/.*translation not found.*/);
+    expect(() => translationPipe.transform({})).toThrowError(/.*translation not found.*/);
   });
 
   it('#get Should replace variables', () => {
@@ -41,7 +41,7 @@ describe('TranslationPipe', () => {
 
   it('#get Should throw error variable could not be replaced', () => {
     const smTranslation = 'Hello {{World}}';
-    expect(_ => translationPipe.transform({[defaultLang]: smTranslation}, {})).toThrowError('could not replace variable: World');
+    expect(() => translationPipe.transform({[defaultLang]: smTranslation}, {})).toThrowError('could not replace variable: World');
   });
 
   it('#get Should use custom lang', () => {
