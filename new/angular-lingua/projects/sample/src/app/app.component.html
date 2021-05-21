@@ -22,7 +22,7 @@
         *ngFor="let language of languages"
         mat-button
         (click)="changeLanguage(language.short)"
-        [class.active-language]="(translationService.$language | async) == language.short"
+        [class.active-language]="(translationService.$language | async) === language.short"
       >{{language.text}}</button>
     </div>
   </mat-sidenav>
