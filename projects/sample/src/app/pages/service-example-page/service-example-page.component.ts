@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {TranslationService} from 'angular-lingua';
 import {LOCALES} from '../../../locales/locales';
 
@@ -7,13 +7,10 @@ import {LOCALES} from '../../../locales/locales';
   templateUrl: './service-example-page.component.html',
   styleUrls: ['./service-example-page.component.scss']
 })
-export class ServiceExamplePageComponent implements OnInit {
+export class ServiceExamplePageComponent {
   readonly LOCALES = LOCALES;
 
   constructor(private translationService: TranslationService) {
-  }
-
-  ngOnInit() {
   }
 
   basicExample() {
