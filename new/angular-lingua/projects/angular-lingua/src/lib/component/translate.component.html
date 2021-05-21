@@ -1,8 +1,0 @@
-<ng-template ngFor let-translation [ngForOf]="translationList">
-  <ng-template [ngIf]="translation.type === 'string'">
-    {{translation.value}}
-  </ng-template>
-
-  <ng-container *ngIf="translation.type === 'key'" [ngTemplateOutlet]="optionMap[translation.value]"></ng-container>
-</ng-template>
-
