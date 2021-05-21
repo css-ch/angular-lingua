@@ -26,7 +26,7 @@
     "test": "ng test",
     "test:ci": "ng test --watch=false --browsers=ChromeHeadlessCustom",
     "e2e": "ng e2e --project sample-e2e",
-    "npm:publish:patch": "npm version patch && npm run build && cd dist && npm publish"
+    "npm:publish:patch": "npm version patch && npm run build && cd dist/angular-lingua && npm publish"
   },
   "license": "agpl-3.0",
   "author": {
