@@ -1,6 +1,6 @@
 {
   "name": "angular-lingua",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "private": false,
   "description": "Make @angular i18n translation simple and easy again",
   "keywords": [
