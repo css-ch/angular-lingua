@@ -35,9 +35,11 @@ jobs:
           git config --local user.name "github-actions-release-bot"
           git add projects/angular-lingua/package.json
           git commit -m ":bookmark: Creating Patch release: v${newVersion}" 
+          git tag "v${newVersion}
 
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
+          tags: true
