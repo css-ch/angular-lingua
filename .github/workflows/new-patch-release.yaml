@@ -22,16 +22,15 @@ jobs:
         with:
           node-version: 14.x
 
-      - name: Setup npm config
-        run: echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > ~/.npmrc
-    
       - uses: bahmutov/npm-install@v1
 
       - name: Patch Version and Deploy
         run: npm run version:patch:build
       
       - name: Publish
-        run: npm run lib:publish
+        run: |
+          echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > ~/.npmrc
+          npm run lib:publish
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
