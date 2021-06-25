@@ -27,7 +27,8 @@
     "test:ci": "ng test --watch=false --browsers=ChromeHeadlessCustom",
     "e2e": "ng e2e --project sample-e2e",
     "version:patch:build": "cd projects/angular-lingua && npm version patch && cd ../../ && npm run build:lib",
-    "lib:version": "cd projects/angular-lingua && npx -c 'echo \"$npm_package_version\"' && cd ../../"
+    "lib:version": "cd projects/angular-lingua && npx -c 'echo \"$npm_package_version\"' && cd ../../",
+    "lib:publish": "cd dist/angular-lingua && npm publish && cd ../../"
   },
   "license": "agpl-3.0",
   "author": {

@@ -26,11 +26,11 @@ jobs:
 
       - name: Patch Version and Deploy
         run: npm run version:patch:build
-
-      - uses: JS-DevTools/npm-publish@v1
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          package: ./dist/angular-lingua/package.json
+      
+      - name: Publish
+        run: npm run lib:publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Commit files
         run: |
@@ -40,7 +40,7 @@ jobs:
           git add projects/angular-lingua/package.json
           git commit -m ":bookmark: Creating Patch release: v${newVersion}" 
           git tag "v${newVersion}"
-
+          
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
