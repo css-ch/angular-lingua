@@ -30,7 +30,7 @@ jobs:
       - name: Publish
         run: npm run lib:publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Commit files
         run: |
