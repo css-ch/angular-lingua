@@ -3,7 +3,6 @@
 name: new patch release
 
 on:
-  push:
   workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -26,7 +25,12 @@ jobs:
       - uses: bahmutov/npm-install@v1
 
       - name: Patch Version and Deploy
-        run: npm run npm:publish:patch
+        run: npm run version:patch:build
+
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          package: ./dist/angular-lingua/package.json
 
       - name: Commit files
         run: |
